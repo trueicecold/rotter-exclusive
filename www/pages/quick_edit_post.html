@@ -1,0 +1,56 @@
+﻿<div id="title">אשכול חדש</div>
+<div id="content">
+	<table align="center" cellpadding="2" cellspacing="0" id="newPostMainContent" width="100%">
+		<tr>
+			<td colspan="2" style="padding-right:20px;padding-left:20px;">
+				<table cellpadding="3" cellspacing="0" style="width:100%;">
+					<tr id="selectIconRow">
+						<td>
+							<input type="hidden" id="post_icon"/>
+							<span style="float:right;margin-top:4px;">אייקון:</span>
+							<div class="button" style="margin-right:10px;width:100px;float:right;position:relative;" ontouchstart="PagesScripts.edit_post.showIconsList();">
+								<img id="post_selected_icon" style="position:absolute;right:2px;max-height:20px;max-width:20px;display:none;" src=""/>
+								<div id="post_selected_icon_caption" valign="middle" style="position:absolute;right:25px;">
+										בחר אייקון
+								</div>
+							</div>
+							<div id="icon_list" style="clear:both;display:none;padding-top:3px;">
+								<ul style="width:100%;margin-top:3px;" id="icon_container"></ul>
+							</div>							
+						</td>
+					</tr>
+					<tr>
+						<td>
+							כותרת:
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<input type="text" id="postEditTitle" onkeyup="PagesScripts.edit_post.setPostState()" style="width:100%;"/>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							גוף ההודעה:
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<textarea id="postEditBody" style="min-height:90px;width:100%;"></textarea>
+						</td>
+					</tr>
+					<tr>
+						<td align="left">
+							<div class="button" style="width:100px;" type="button" onClick="UploadManager.chooseImage()">העלה תמונה</div>
+						</td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+	</table>
+</div>
+<div id="options">
+	<div class="button" id="post_send_button" disabled="disabled" onClick="PagesScripts.edit_post.sendEditedPost()">שלח הודעה</div>
+	<div style="height:6px;"></div>
+	<div class="button" onClick="PageManager.hidePopup()">סגור</div>
+</div>

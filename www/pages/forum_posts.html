@@ -1,0 +1,17 @@
+﻿<ul id="posts_list"></ul>
+<div>
+	<table align="center" cellspacing="5" id="forumPagingContainer" style="display:none;max-width:320px;">
+		<tr>
+			<td width="80"><div id="forumPagePrev" class="button paging" ontouchstart="event.preventDefault();event.stopPropagation();PagesScripts.forum_posts.incPage(-1)"><</div></td>
+			<td width="100%" align="center">עמוד מספר <span id="forumPageNum"></span></td>
+			<td width="80"><div id="forumPageNext" class="button paging" ontouchstart="event.preventDefault();event.stopPropagation();PagesScripts.forum_posts.incPage(1)">></div></td>
+		</tr>
+		<tr>
+			<td colspan="3" height="20"></td>
+		</tr>
+	</table>
+</div>
+<div id="right_menu_buttons" style="display:none;">
+	<div type="menu_button" class="right_menu_new" onClick="event.preventDefault();event.stopPropagation();PagesScripts.new_post.checkNewPost()" ontouchstart="event.preventDefault();event.stopPropagation();PagesScripts.new_post.checkNewPost()"></div>
+	<div type="menu_button" class="right_menu_refresh" onClick="event.preventDefault();event.stopPropagation();PagesScripts.forum_posts.refresh();"></div>
+</div>

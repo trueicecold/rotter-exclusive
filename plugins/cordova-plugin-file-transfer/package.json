@@ -1,0 +1,143 @@
+{
+  "_args": [
+    [
+      "cordova-plugin-file-transfer",
+      "D:\\Work\\RotterExclusiveNew"
+    ]
+  ],
+  "_from": "cordova-plugin-file-transfer@latest",
+  "_id": "cordova-plugin-file-transfer@1.6.3",
+  "_inCache": true,
+  "_installable": true,
+  "_location": "/cordova-plugin-file-transfer",
+  "_nodeVersion": "6.10.1",
+  "_npmOperationalInternal": {
+    "host": "packages-12-west.internal.npmjs.com",
+    "tmp": "tmp/cordova-plugin-file-transfer-1.6.3.tgz_1493685639752_0.7410060225520283"
+  },
+  "_npmUser": {
+    "email": "maj.fil@gmail.com",
+    "name": "filmaj"
+  },
+  "_npmVersion": "3.10.10",
+  "_phantomChildren": {},
+  "_requested": {
+    "name": "cordova-plugin-file-transfer",
+    "raw": "cordova-plugin-file-transfer",
+    "rawSpec": "",
+    "scope": null,
+    "spec": "latest",
+    "type": "tag"
+  },
+  "_requiredBy": [
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/cordova-plugin-file-transfer/-/cordova-plugin-file-transfer-1.6.3.tgz",
+  "_shasum": "6c71de63b076cbec570eca664586ff9a51b8ac21",
+  "_shrinkwrap": null,
+  "_spec": "cordova-plugin-file-transfer",
+  "_where": "D:\\Work\\RotterExclusiveNew",
+  "author": {
+    "name": "Apache Software Foundation"
+  },
+  "bugs": {
+    "url": "https://github.com/apache/cordova-plugin-file-transfer/issues"
+  },
+  "cordova": {
+    "id": "cordova-plugin-file-transfer",
+    "platforms": [
+      "android",
+      "amazon-fireos",
+      "ubuntu",
+      "blackberry10",
+      "ios",
+      "wp7",
+      "wp8",
+      "windows8",
+      "windows",
+      "firefoxos",
+      "browser"
+    ]
+  },
+  "dependencies": {},
+  "description": "Cordova File Transfer Plugin",
+  "devDependencies": {
+    "jscs": "^2.6.0",
+    "jshint": "^2.8.0"
+  },
+  "directories": {},
+  "dist": {
+    "shasum": "6c71de63b076cbec570eca664586ff9a51b8ac21",
+    "tarball": "https://registry.npmjs.org/cordova-plugin-file-transfer/-/cordova-plugin-file-transfer-1.6.3.tgz"
+  },
+  "engines": {
+    "cordovaDependencies": {
+      "2.0.0": {
+        "cordova": ">100"
+      }
+    }
+  },
+  "homepage": "https://github.com/apache/cordova-plugin-file-transfer#readme",
+  "keywords": [
+    "cordova",
+    "file",
+    "transfer",
+    "ecosystem:cordova",
+    "cordova-android",
+    "cordova-amazon-fireos",
+    "cordova-ubuntu",
+    "cordova-blackberry10",
+    "cordova-ios",
+    "cordova-wp7",
+    "cordova-wp8",
+    "cordova-windows8",
+    "cordova-windows",
+    "cordova-firefoxos",
+    "cordova-browser"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    {
+      "email": "bowserj@apache.org",
+      "name": "bowserj"
+    },
+    {
+      "email": "csantana23@gmail.com",
+      "name": "csantanapr"
+    },
+    {
+      "email": "maj.fil@gmail.com",
+      "name": "filmaj"
+    },
+    {
+      "email": "nikhil.khandelwal@gmail.com",
+      "name": "nikhilkh"
+    },
+    {
+      "email": "purplecabbage@gmail.com",
+      "name": "purplecabbage"
+    },
+    {
+      "email": "shazron@gmail.com",
+      "name": "shazron"
+    },
+    {
+      "email": "stevengill97@gmail.com",
+      "name": "stevegill"
+    }
+  ],
+  "name": "cordova-plugin-file-transfer",
+  "optionalDependencies": {},
+  "readme": "ERROR: No README data found!",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/apache/cordova-plugin-file-transfer.git"
+  },
+  "scripts": {
+    "lint": "jshint www && jshint src && jshint tests",
+    "style": "jscs tests/tests.js",
+    "test": "npm run lint && npm run style"
+  },
+  "types": "./types/index.d.ts",
+  "version": "1.6.3"
+}

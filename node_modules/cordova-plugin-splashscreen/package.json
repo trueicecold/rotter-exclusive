@@ -1,0 +1,143 @@
+{
+  "_args": [
+    [
+      "cordova-plugin-splashscreen@4.0.3",
+      "D:\\Work\\RotterExclusiveNew"
+    ]
+  ],
+  "_from": "cordova-plugin-splashscreen@4.0.3",
+  "_id": "cordova-plugin-splashscreen@4.0.3",
+  "_inCache": true,
+  "_installable": true,
+  "_location": "/cordova-plugin-splashscreen",
+  "_nodeVersion": "6.10.1",
+  "_npmOperationalInternal": {
+    "host": "packages-18-east.internal.npmjs.com",
+    "tmp": "tmp/cordova-plugin-splashscreen-4.0.3.tgz_1493685654007_0.6477097773458809"
+  },
+  "_npmUser": {
+    "email": "maj.fil@gmail.com",
+    "name": "filmaj"
+  },
+  "_npmVersion": "3.10.10",
+  "_phantomChildren": {},
+  "_requested": {
+    "name": "cordova-plugin-splashscreen",
+    "raw": "cordova-plugin-splashscreen@4.0.3",
+    "rawSpec": "4.0.3",
+    "scope": null,
+    "spec": "4.0.3",
+    "type": "version"
+  },
+  "_requiredBy": [
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/cordova-plugin-splashscreen/-/cordova-plugin-splashscreen-4.0.3.tgz",
+  "_shasum": "773cd1363c1f3bacb9901663e9e3793dd3e0a19d",
+  "_shrinkwrap": null,
+  "_spec": "cordova-plugin-splashscreen@4.0.3",
+  "_where": "D:\\Work\\RotterExclusiveNew",
+  "author": {
+    "name": "Apache Software Foundation"
+  },
+  "bugs": {
+    "url": "https://github.com/apache/cordova-plugin-splashscreen/issues"
+  },
+  "cordova": {
+    "id": "cordova-plugin-splashscreen",
+    "platforms": [
+      "android",
+      "amazon-fireos",
+      "ubuntu",
+      "ios",
+      "blackberry10",
+      "wp8",
+      "windows8",
+      "windows",
+      "tizen"
+    ]
+  },
+  "dependencies": {},
+  "description": "Cordova Splashscreen Plugin",
+  "devDependencies": {
+    "jshint": "^2.6.0"
+  },
+  "directories": {},
+  "dist": {
+    "shasum": "773cd1363c1f3bacb9901663e9e3793dd3e0a19d",
+    "tarball": "https://registry.npmjs.org/cordova-plugin-splashscreen/-/cordova-plugin-splashscreen-4.0.3.tgz"
+  },
+  "engines": {
+    "cordovaDependencies": {
+      "2.0.0": {
+        "cordova-android": ">=3.6.0"
+      },
+      "4.0.0": {
+        "cordova-android": ">=3.6.0",
+        "cordova-windows": ">=4.4.0"
+      },
+      "5.0.0": {
+        "cordova": ">100"
+      }
+    }
+  },
+  "homepage": "https://github.com/apache/cordova-plugin-splashscreen#readme",
+  "keywords": [
+    "cordova",
+    "splashscreen",
+    "ecosystem:cordova",
+    "cordova-android",
+    "cordova-amazon-fireos",
+    "cordova-ubuntu",
+    "cordova-ios",
+    "cordova-blackberry10",
+    "cordova-wp8",
+    "cordova-windows8",
+    "cordova-windows",
+    "cordova-tizen"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    {
+      "email": "bowserj@apache.org",
+      "name": "bowserj"
+    },
+    {
+      "email": "csantana23@gmail.com",
+      "name": "csantanapr"
+    },
+    {
+      "email": "maj.fil@gmail.com",
+      "name": "filmaj"
+    },
+    {
+      "email": "kotikov.vladimir@gmail.com",
+      "name": "kotikov.vladimir"
+    },
+    {
+      "email": "purplecabbage@gmail.com",
+      "name": "purplecabbage"
+    },
+    {
+      "email": "shazron@gmail.com",
+      "name": "shazron"
+    },
+    {
+      "email": "stevengill97@gmail.com",
+      "name": "stevegill"
+    }
+  ],
+  "name": "cordova-plugin-splashscreen",
+  "optionalDependencies": {},
+  "readme": "ERROR: No README data found!",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/apache/cordova-plugin-splashscreen.git"
+  },
+  "scripts": {
+    "jshint": "node node_modules/jshint/bin/jshint www && node node_modules/jshint/bin/jshint src && node node_modules/jshint/bin/jshint tests",
+    "test": "npm run jshint"
+  },
+  "types": "./types/index.d.ts",
+  "version": "4.0.3"
+}

@@ -1,0 +1,25 @@
+<div id="title">אפשרויות</div>
+<div id="content" style="margin:0px auto;">
+	<table style="width:100%;text-align:center;" cellpadding="0" cellspacing="0">
+		<tr>
+			<td width="33%" align="center">
+				<div type="options_menu_button" class="right_menu_new" onClick="event.preventDefault();event.stopPropagation();PagesScripts.inbox.newMessage();">
+					<div class="title">הודעה חדשה</div>
+				</div>
+			</td>
+			<td width="33%" align="center">
+				<div type="options_menu_button" class="right_menu_refresh" onClick="event.preventDefault();event.stopPropagation();PagesScripts.inbox.refresh();">
+					<div class="title">רענן</div>
+				</div>
+			</td>
+			<td width="33%" align="center">
+				<div type="options_menu_button" class="right_menu_trash" onClick="event.preventDefault();event.stopPropagation();PagesScripts.inbox.showDeletePopup()" ontouchstart="event.preventDefault();event.stopPropagation();PagesScripts.inbox.showDeletePopup()">
+					<div class="title">מחק הודעות</div>
+				</div>
+			</td>
+		</tr>
+	</table>
+</div>
+<div id="options" style="clear:both;">
+	<div class="button" onClick="PageManager.hidePopup()">סגור</div>
+</div>

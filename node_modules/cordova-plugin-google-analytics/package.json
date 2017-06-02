@@ -1,0 +1,90 @@
+{
+  "_args": [
+    [
+      "cordova-plugin-google-analytics",
+      "D:\\Work\\RotterExclusiveNew"
+    ]
+  ],
+  "_from": "cordova-plugin-google-analytics@latest",
+  "_id": "cordova-plugin-google-analytics@1.8.2",
+  "_inCache": true,
+  "_installable": true,
+  "_location": "/cordova-plugin-google-analytics",
+  "_nodeVersion": "6.10.2",
+  "_npmOperationalInternal": {
+    "host": "packages-18-east.internal.npmjs.com",
+    "tmp": "tmp/cordova-plugin-google-analytics-1.8.2.tgz_1493855977612_0.9943270892836154"
+  },
+  "_npmUser": {
+    "email": "victornsosa@gmail.com",
+    "name": "victorsosa"
+  },
+  "_npmVersion": "4.5.0",
+  "_phantomChildren": {},
+  "_requested": {
+    "name": "cordova-plugin-google-analytics",
+    "raw": "cordova-plugin-google-analytics",
+    "rawSpec": "",
+    "scope": null,
+    "spec": "latest",
+    "type": "tag"
+  },
+  "_requiredBy": [
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/cordova-plugin-google-analytics/-/cordova-plugin-google-analytics-1.8.2.tgz",
+  "_shasum": "d5cfe46fc4e2906c8ec4cff965102ac4a5ae613e",
+  "_shrinkwrap": null,
+  "_spec": "cordova-plugin-google-analytics",
+  "_where": "D:\\Work\\RotterExclusiveNew",
+  "author": {
+    "name": "Dan Wilson"
+  },
+  "bugs": {
+    "url": "https://github.com/danwilson/google-analytics-plugin/issues"
+  },
+  "cordova": {
+    "id": "cordova-plugin-google-analytics",
+    "platforms": [
+      "android",
+      "ios"
+    ]
+  },
+  "dependencies": {},
+  "description": "Google Universal Analytics Plugin",
+  "devDependencies": {},
+  "directories": {},
+  "dist": {
+    "shasum": "d5cfe46fc4e2906c8ec4cff965102ac4a5ae613e",
+    "tarball": "https://registry.npmjs.org/cordova-plugin-google-analytics/-/cordova-plugin-google-analytics-1.8.2.tgz"
+  },
+  "gitHead": "a9b24967858422af3e4a1da08f57357667dfffd3",
+  "homepage": "https://github.com/danwilson/google-analytics-plugin#readme",
+  "keywords": [
+    "cordova",
+    "googleanalytics",
+    "ecosystem:cordova",
+    "cordova-android",
+    "cordova-ios",
+    "analytics",
+    "google",
+    "universal",
+    "universalanalytics"
+  ],
+  "license": "MIT",
+  "maintainers": [
+    {
+      "email": "dwilson1@gmail.com",
+      "name": "dancwilson"
+    }
+  ],
+  "name": "cordova-plugin-google-analytics",
+  "optionalDependencies": {},
+  "readme": "ERROR: No README data found!",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/danwilson/google-analytics-plugin.git"
+  },
+  "scripts": {},
+  "version": "1.8.2"
+}

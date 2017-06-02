@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="cordova-generic-ad">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/libs/cordova-generic-ad.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

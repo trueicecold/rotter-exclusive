@@ -1,0 +1,7 @@
+﻿<li onclick="PagesScripts.forums.setCurrentForum('[FORUM_ID]')" style="position:relative;">
+	<img class="forum_icon" src="[FORUM_LOGO]" width="40" height="40"/>
+	<h3>[FORUM_TITLE]</h3>
+	<span class="description">[FORUM_DESCRIPTION]</span>
+	<div forum="[FORUM_ID]" class="bookmark_icon" onclick="event.preventDefault();event.stopPropagation();" ontouchstart="PagesScripts.bookmarks.saveForumBoookmark(this, '[FORUM_TITLE]', '[FORUM_ID]');">
+	</div>
+</li>

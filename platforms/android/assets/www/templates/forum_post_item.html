@@ -1,0 +1,9 @@
+﻿<li onclick="PagesScripts.forum_posts.setLastScroll();" style="position:relative;">
+	<img class="post_icon" src="[POST_ICON]"/>
+	<a href="#post,forum=[FORUM_ID]&post=[POST_ID]&type=[LINK_TYPE]" class="[POST_TITLE_CLASS]"><h3>[POST_TITLE]</h3></a>
+	<p class="post_opener">נכתב ע"י [POST_OPENER]</p>
+	<p class="post_details">מכתב אחרון ב-[POST_LAST_TIME] [POST_LAST_DATE] ע"י [POST_LAST_POSTER]</p>
+	<div class="post_counter">[POST_COMMENT_COUNT]</div>
+	<div forum="[FORUM_ID]" post="[POST_ID]" class="bookmark_icon" onclick="event.preventDefault();event.stopPropagation();" ontouchstart="PagesScripts.bookmarks.savePostBoookmark(this, '[FORUM_NAME]', '[FORUM_ID]', '[POST_TITLE_ESCAPE]', '[POST_ID]');">
+	</div>
+</li>

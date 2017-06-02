@@ -1,0 +1,140 @@
+{
+  "_args": [
+    [
+      "cordova-plugin-file",
+      "D:\\Work\\RotterExclusiveNew"
+    ]
+  ],
+  "_from": "cordova-plugin-file@latest",
+  "_id": "cordova-plugin-file@4.3.3",
+  "_inCache": true,
+  "_installable": true,
+  "_location": "/cordova-plugin-file",
+  "_nodeVersion": "6.10.1",
+  "_npmOperationalInternal": {
+    "host": "packages-18-east.internal.npmjs.com",
+    "tmp": "tmp/cordova-plugin-file-4.3.3.tgz_1493685743335_0.13007491896860301"
+  },
+  "_npmUser": {
+    "email": "maj.fil@gmail.com",
+    "name": "filmaj"
+  },
+  "_npmVersion": "3.10.10",
+  "_phantomChildren": {},
+  "_requested": {
+    "name": "cordova-plugin-file",
+    "raw": "cordova-plugin-file",
+    "rawSpec": "",
+    "scope": null,
+    "spec": "latest",
+    "type": "tag"
+  },
+  "_requiredBy": [
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/cordova-plugin-file/-/cordova-plugin-file-4.3.3.tgz",
+  "_shasum": "012e97aa1afb91f84916e6341b548366d23de9b9",
+  "_shrinkwrap": null,
+  "_spec": "cordova-plugin-file",
+  "_where": "D:\\Work\\RotterExclusiveNew",
+  "author": {
+    "name": "Apache Software Foundation"
+  },
+  "bugs": {
+    "url": "https://github.com/apache/cordova-plugin-file/issues"
+  },
+  "cordova": {
+    "id": "cordova-plugin-file",
+    "platforms": [
+      "android",
+      "amazon-fireos",
+      "ubuntu",
+      "ios",
+      "osx",
+      "wp7",
+      "wp8",
+      "blackberry10",
+      "windows8",
+      "windows",
+      "firefoxos"
+    ]
+  },
+  "dependencies": {},
+  "description": "Cordova File Plugin",
+  "devDependencies": {
+    "jshint": "^2.6.0"
+  },
+  "directories": {},
+  "dist": {
+    "shasum": "012e97aa1afb91f84916e6341b548366d23de9b9",
+    "tarball": "https://registry.npmjs.org/cordova-plugin-file/-/cordova-plugin-file-4.3.3.tgz"
+  },
+  "engines": {
+    "cordovaDependencies": {
+      "5.0.0": {
+        "cordova": ">100"
+      }
+    }
+  },
+  "homepage": "https://github.com/apache/cordova-plugin-file#readme",
+  "keywords": [
+    "cordova",
+    "file",
+    "ecosystem:cordova",
+    "cordova-android",
+    "cordova-amazon-fireos",
+    "cordova-ubuntu",
+    "cordova-ios",
+    "cordova-osx",
+    "cordova-wp7",
+    "cordova-wp8",
+    "cordova-blackberry10",
+    "cordova-windows8",
+    "cordova-windows",
+    "cordova-firefoxos"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    {
+      "email": "bowserj@apache.org",
+      "name": "bowserj"
+    },
+    {
+      "email": "csantana23@gmail.com",
+      "name": "csantanapr"
+    },
+    {
+      "email": "maj.fil@gmail.com",
+      "name": "filmaj"
+    },
+    {
+      "email": "kotikov.vladimir@gmail.com",
+      "name": "kotikov.vladimir"
+    },
+    {
+      "email": "purplecabbage@gmail.com",
+      "name": "purplecabbage"
+    },
+    {
+      "email": "shazron@gmail.com",
+      "name": "shazron"
+    },
+    {
+      "email": "stevengill97@gmail.com",
+      "name": "stevegill"
+    }
+  ],
+  "name": "cordova-plugin-file",
+  "optionalDependencies": {},
+  "readme": "ERROR: No README data found!",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/apache/cordova-plugin-file.git"
+  },
+  "scripts": {
+    "jshint": "node node_modules/jshint/bin/jshint www && node node_modules/jshint/bin/jshint src && node node_modules/jshint/bin/jshint tests",
+    "test": "npm run jshint"
+  },
+  "types": "./types/index.d.ts",
+  "version": "4.3.3"
+}

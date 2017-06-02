@@ -1,0 +1,21 @@
+<div class="post_details" id="comment_[POST_COMMENT_NUMBER]" style="color:#444499;margin-right:[POST_COMMENT_LEVEL]px;">
+    <div style="float:left;">נכתב בתאריך [POST_COMMENT_DATE] בשעה [POST_COMMENT_TIME]</div>
+	[POST_COMMENT_WRITER] [POST_COMMENT_WRITER_ICON]
+</div>
+<div class="comment_item" style="color:#444499;color:#000000;padding:2px;border:1px solid #444444;background-color:#ffffff;margin-bottom:15px;margin-right:[POST_COMMENT_LEVEL]px;">
+    <span class="comment_title" style="word-wrap: break-word;font-weight:bold;">[POST_COMMENT_TITLE]</span><br/>
+    <span class="in_reply_to" style="color:red;display:[POST_COMMENT_IS_REPLY]">בתגובה להודעה מספר [POST_COMMENT_REPLY_TO]</span>
+    <br/><br/>
+    <div class="comment_content" style="word-wrap: break-word;">
+    [POST_COMMENT_CONTENT]
+    </div>
+    <div style="padding-top:5px;text-align:left;display:[POST_COMMENT_IS_LOCKED];padding-bottom:5px;">
+        <span style="display:[POST_COMMENT_IS_ME_EDIT]">
+			<a class="button" onClick="PagesScripts.edit_post.setEditPost('[POST_COMMENT_NUMBER]')">עריכה</a> |
+		</span>
+		<span style="display:[POST_COMMENT_IS_ME_JUMP]">
+			<a class="button" onClick="PagesScripts.post.setJumpPost(event)">הקפצה</a> | 
+		</span>
+        <a class="button" onClick="PagesScripts.comment_post.checkNewComment('[POST_COMMENT_NUMBER]', '[POST_COMMENT_TITLE_ESCAPE]')">תגובה</a>
+    </div>
+</div>

@@ -1,0 +1,47 @@
+﻿<div id="title">תגובה חדשה</div>
+<div id="content">
+	<table align="center" cellpadding="2" cellspacing="0" id="newPostMainContent" width="100%">
+		<tr>
+			<td colspan="2" style="padding-right:20px;padding-left:20px;">
+				<table cellpadding="0" cellspacing="0" style="width:100%;">
+					<tr>
+						<td>
+							כתוב תגובה ל: <span style="color:red" id="comment_from_title"></span>
+							<p/>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							כותרת:
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<input type="text" id="comment_title" onkeyup="PagesScripts.comment_post.setPostState()" style="width:100%;"/>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							גוף ההודעה:
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<textarea id="comment_body" style="min-height:90px;width:100%;"></textarea>
+						</td>
+					</tr>
+					<tr>
+						<td align="left">
+							<div class="button" style="width:100px;" type="button" onClick="UploadManager.chooseImage()">העלה תמונה</div>
+						</td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+	</table>
+</div>
+<div id="options">
+	<div class="button" id="comment_send_button" disabled="disabled" onClick="PagesScripts.comment_post.sendComment()">שלח תגובה</div>
+	<div style="height:6px;"></div>
+	<div class="button" onclick="PageManager.hidePopup()">סגור</div>
+</div>

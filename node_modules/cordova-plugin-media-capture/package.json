@@ -1,0 +1,133 @@
+{
+  "_args": [
+    [
+      "cordova-plugin-media-capture",
+      "D:\\Work\\RotterExclusiveNew"
+    ]
+  ],
+  "_from": "cordova-plugin-media-capture@latest",
+  "_id": "cordova-plugin-media-capture@1.4.3",
+  "_inCache": true,
+  "_installable": true,
+  "_location": "/cordova-plugin-media-capture",
+  "_nodeVersion": "6.10.1",
+  "_npmOperationalInternal": {
+    "host": "packages-12-west.internal.npmjs.com",
+    "tmp": "tmp/cordova-plugin-media-capture-1.4.3.tgz_1493685648831_0.005625565070658922"
+  },
+  "_npmUser": {
+    "email": "maj.fil@gmail.com",
+    "name": "filmaj"
+  },
+  "_npmVersion": "3.10.10",
+  "_phantomChildren": {},
+  "_requested": {
+    "name": "cordova-plugin-media-capture",
+    "raw": "cordova-plugin-media-capture",
+    "rawSpec": "",
+    "scope": null,
+    "spec": "latest",
+    "type": "tag"
+  },
+  "_requiredBy": [
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/cordova-plugin-media-capture/-/cordova-plugin-media-capture-1.4.3.tgz",
+  "_shasum": "20e3bbe334fbb89f624b02188eac5372743920fa",
+  "_shrinkwrap": null,
+  "_spec": "cordova-plugin-media-capture",
+  "_where": "D:\\Work\\RotterExclusiveNew",
+  "author": {
+    "name": "Apache Software Foundation"
+  },
+  "bugs": {
+    "url": "https://github.com/apache/cordova-plugin-media-capture/issues"
+  },
+  "cordova": {
+    "id": "cordova-plugin-media-capture",
+    "platforms": [
+      "android",
+      "amazon-fireos",
+      "ubuntu",
+      "ios",
+      "blackberry10",
+      "wp7",
+      "wp8",
+      "windows8",
+      "windows"
+    ]
+  },
+  "dependencies": {},
+  "description": "Cordova Media Capture Plugin",
+  "devDependencies": {
+    "jshint": "^2.6.0"
+  },
+  "directories": {},
+  "dist": {
+    "shasum": "20e3bbe334fbb89f624b02188eac5372743920fa",
+    "tarball": "https://registry.npmjs.org/cordova-plugin-media-capture/-/cordova-plugin-media-capture-1.4.3.tgz"
+  },
+  "engines": {
+    "cordovaDependencies": {
+      "2.0.0": {
+        "cordova": ">100"
+      }
+    }
+  },
+  "homepage": "https://github.com/apache/cordova-plugin-media-capture#readme",
+  "keywords": [
+    "cordova",
+    "media",
+    "capture",
+    "ecosystem:cordova",
+    "cordova-android",
+    "cordova-amazon-fireos",
+    "cordova-ubuntu",
+    "cordova-ios",
+    "cordova-blackberry10",
+    "cordova-wp7",
+    "cordova-wp8",
+    "cordova-windows8",
+    "cordova-windows"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    {
+      "email": "bowserj@apache.org",
+      "name": "bowserj"
+    },
+    {
+      "email": "csantana23@gmail.com",
+      "name": "csantanapr"
+    },
+    {
+      "email": "maj.fil@gmail.com",
+      "name": "filmaj"
+    },
+    {
+      "email": "purplecabbage@gmail.com",
+      "name": "purplecabbage"
+    },
+    {
+      "email": "shazron@gmail.com",
+      "name": "shazron"
+    },
+    {
+      "email": "stevengill97@gmail.com",
+      "name": "stevegill"
+    }
+  ],
+  "name": "cordova-plugin-media-capture",
+  "optionalDependencies": {},
+  "readme": "ERROR: No README data found!",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/apache/cordova-plugin-media-capture.git"
+  },
+  "scripts": {
+    "jshint": "jshint www && jshint src && jshint tests",
+    "test": "npm run jshint"
+  },
+  "types": "./types/index.d.ts",
+  "version": "1.4.3"
+}
