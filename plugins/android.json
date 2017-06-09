@@ -33,6 +33,15 @@
         },
         "cordova-plugin-file-transfer": {
             "PACKAGE_NAME": "com.yanivnagar.rotterexclusive"
+        },
+        "cordova-plugin-statusbar": {
+            "PACKAGE_NAME": "com.yanivnagar.rotterexclusive"
+        },
+        "cordova-plugin-device": {
+            "PACKAGE_NAME": "com.yanivnagar.rotterexclusive"
+        },
+        "onesignal-cordova-plugin": {
+            "PACKAGE_NAME": "com.yanivnagar.rotterexclusive"
         }
     },
     "dependent_plugins": {

@@ -81,6 +81,7 @@
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/blame" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/classes" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/dex-cache" />
+      <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/com.android.support/customtabs/24.0.0/jars" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/com.android.support/support-v4/24.1.1/jars" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/com.google.android.gms/play-services-ads-lite/10.2.4/jars" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/com.google.android.gms/play-services-ads/10.2.4/jars" />
@@ -90,8 +91,12 @@
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/10.2.4/jars" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/com.google.android.gms/play-services-clearcut/10.2.4/jars" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/com.google.android.gms/play-services-gass/10.2.4/jars" />
+      <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/com.google.android.gms/play-services-gcm/10.0.1/jars" />
+      <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/com.google.android.gms/play-services-iid/10.0.1/jars" />
+      <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/com.google.android.gms/play-services-location/10.0.1/jars" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/com.google.android.gms/play-services-tagmanager-v4-impl/10.2.4/jars" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/com.google.android.gms/play-services-tasks/10.2.4/jars" />
+      <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/com.onesignal/OneSignal/3.5.6/jars" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/incremental" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/incremental-safeguard" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/jniLibs" />
@@ -111,15 +116,20 @@
     <orderEntry type="library" exported="" name="play-services-analytics-impl-10.2.4" level="project" />
     <orderEntry type="library" exported="" name="cordova-generic-ad" level="project" />
     <orderEntry type="library" exported="" name="play-services-ads-10.2.4" level="project" />
+    <orderEntry type="library" exported="" name="play-services-iid-10.0.1" level="project" />
     <orderEntry type="library" exported="" name="play-services-base-10.2.4" level="project" />
     <orderEntry type="library" exported="" name="play-services-gass-10.2.4" level="project" />
     <orderEntry type="library" exported="" name="play-services-tagmanager-v4-impl-10.2.4" level="project" />
     <orderEntry type="library" exported="" name="play-services-tasks-10.2.4" level="project" />
+    <orderEntry type="library" exported="" name="OneSignal-3.5.6" level="project" />
     <orderEntry type="library" exported="" name="play-services-basement-10.2.4" level="project" />
+    <orderEntry type="library" exported="" name="customtabs-24.0.0" level="project" />
     <orderEntry type="library" exported="" name="support-annotations-24.1.1" level="project" />
     <orderEntry type="library" exported="" name="play-services-analytics-10.2.4" level="project" />
     <orderEntry type="library" exported="" name="play-services-clearcut-10.2.4" level="project" />
+    <orderEntry type="library" exported="" name="play-services-location-10.0.1" level="project" />
     <orderEntry type="library" exported="" name="play-services-ads-lite-10.2.4" level="project" />
+    <orderEntry type="library" exported="" name="play-services-gcm-10.0.1" level="project" />
     <orderEntry type="module" module-name="CordovaLib" exported="" />
   </component>
 </module>

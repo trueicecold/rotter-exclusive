@@ -47,6 +47,18 @@
                         {
                             "xml": "<feature name=\"FileTransfer\"><param name=\"android-package\" value=\"org.apache.cordova.filetransfer.FileTransfer\" /></feature>",
                             "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"StatusBar\"><param name=\"android-package\" value=\"org.apache.cordova.statusbar.StatusBar\" /><param name=\"onload\" value=\"true\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"Device\"><param name=\"android-package\" value=\"org.apache.cordova.device.Device\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"OneSignalPush\"><param name=\"android-package\" value=\"com.plugin.gcm.OneSignalPush\" /></feature>",
+                            "count": 1
                         }
                     ]
                 }
@@ -72,6 +84,18 @@
                         },
                         {
                             "xml": "<service android:enabled=\"true\" android:exported=\"false\" android:name=\"com.google.android.gms.analytics.CampaignTrackingService\" />",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<amazon:enable-feature android:name=\"com.amazon.device.messaging\" android:required=\"false\" xmlns:amazon=\"http://schemas.amazon.com/apk/res/android\" />",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<service android:exported=\"false\" android:name=\"com.onesignal.ADMMessageHandler\" />",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<receiver android:name=\"com.onesignal.ADMMessageHandler$Receiver\" android:permission=\"com.amazon.device.messaging.permission.SEND\"><intent-filter><action android:name=\"com.amazon.device.messaging.intent.REGISTRATION\" /><action android:name=\"com.amazon.device.messaging.intent.RECEIVE\" /><category android:name=\"com.yanivnagar.rotterexclusive\" /></intent-filter></receiver>",
                             "count": 1
                         }
                     ],
@@ -104,6 +128,20 @@
                     "application": [
                         {
                             "xml": "<provider android:authorities=\"${applicationId}.provider\" android:exported=\"false\" android:grantUriPermissions=\"true\" android:name=\"android.support.v4.content.FileProvider\"><meta-data android:name=\"android.support.FILE_PROVIDER_PATHS\" android:resource=\"@xml/provider_paths\" /></provider>",
+                            "count": 1
+                        }
+                    ],
+                    "/manifest": [
+                        {
+                            "xml": "<uses-permission android:name=\"com.amazon.device.messaging.permission.RECEIVE\" />",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<permission android:name=\"com.yanivnagar.rotterexclusive.permission.RECEIVE_ADM_MESSAGE\" android:protectionLevel=\"signature\" />",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<uses-permission android:name=\"com.yanivnagar.rotterexclusive.permission.RECEIVE_ADM_MESSAGE\" />",
                             "count": 1
                         }
                     ]
@@ -143,6 +181,15 @@
             "PACKAGE_NAME": "com.yanivnagar.rotterexclusive"
         },
         "cordova-plugin-file-transfer": {
+            "PACKAGE_NAME": "com.yanivnagar.rotterexclusive"
+        },
+        "cordova-plugin-statusbar": {
+            "PACKAGE_NAME": "com.yanivnagar.rotterexclusive"
+        },
+        "cordova-plugin-device": {
+            "PACKAGE_NAME": "com.yanivnagar.rotterexclusive"
+        },
+        "onesignal-cordova-plugin": {
             "PACKAGE_NAME": "com.yanivnagar.rotterexclusive"
         }
     },
@@ -470,6 +517,30 @@
             "clobbers": [
                 "window.FileTransfer"
             ]
+        },
+        {
+            "id": "cordova-plugin-statusbar.statusbar",
+            "file": "plugins/cordova-plugin-statusbar/www/statusbar.js",
+            "pluginId": "cordova-plugin-statusbar",
+            "clobbers": [
+                "window.StatusBar"
+            ]
+        },
+        {
+            "id": "cordova-plugin-device.device",
+            "file": "plugins/cordova-plugin-device/www/device.js",
+            "pluginId": "cordova-plugin-device",
+            "clobbers": [
+                "device"
+            ]
+        },
+        {
+            "id": "onesignal-cordova-plugin.OneSignal",
+            "file": "plugins/onesignal-cordova-plugin/www/OneSignal.js",
+            "pluginId": "onesignal-cordova-plugin",
+            "clobbers": [
+                "OneSignal"
+            ]
         }
     ],
     "plugin_metadata": {
@@ -483,6 +554,9 @@
         "cordova-plugin-camera": "2.4.1",
         "cordova-plugin-file": "4.3.3",
         "cordova-plugin-media-capture": "1.4.3",
-        "cordova-plugin-file-transfer": "1.6.3"
+        "cordova-plugin-file-transfer": "1.6.3",
+        "cordova-plugin-statusbar": "2.2.3",
+        "cordova-plugin-device": "1.1.6",
+        "onesignal-cordova-plugin": "2.1.1"
     }
 }

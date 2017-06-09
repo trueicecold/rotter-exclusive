@@ -30,7 +30,7 @@ HTTPManager.Login = function (username, password) {
 		url:"https://rotter.name/cgi-bin/nor/dcboard.cgi?az=login",
 		type:"GET",
 		dataType:"text",
-		data:"cmd=login&" + Utils.HEBEncode("שם-משתמש") + "=" + Utils.HEBEncode(username) + "&" + Utils.HEBEncode("סיסמא") + "=" + Utils.HEBEncode(password) + "&login=" + Utils.HEBEncode("קליק"),
+		data:"cmd=login&" + Utils.HEBEncode("שם-משתמש") + "=" + Utils.HEBEncode(Utils.escapeLogin(username)) + "&" + Utils.HEBEncode("סיסמא") + "=" + Utils.HEBEncode(Utils.escapeLogin(password)) + "&login=" + Utils.HEBEncode("קליק"),
 		success:function(data) {
 			HTTPEvents.fireEvent("onLogin", Parser.parseLogin(data));
 		},
@@ -43,6 +43,8 @@ HTTPManager.Login = function (username, password) {
 };
 
 HTTPManager.Logout = function () {
+	console.log("LOGOUT!");
+	PushManager.deleteTags();
 	$.ajax({
 		url:"https://rotter.name/cgi-bin/nor/dcboard.cgi?az=logout",
 		dataType:"text",
@@ -90,7 +92,30 @@ HTTPManager.GetPost = function(forum, id, link_type) {
 		url:(link_type=="long") ? "https://rotter.name/cgi-bin/nor/dcboard.cgi?az=show_thread&om=" + id + "&forum=" + forum + "&viewmode=all" : "https://rotter.name/nor/" + forum + "/" + id + ".shtml",
 		dataType:"text",
 		success:function(data) {
-			HTTPEvents.fireEvent("onPostLoaded", Parser.parsePost(data));
+			if (data.indexOf('<meta http-equiv="refresh" content="0') > -1) {
+				var redirect = data.substr(data.indexOf("URL=") + 4);
+				redirect = redirect.substr(0, redirect.indexOf('"'));
+				
+				if (redirect.indexOf("om=") > -1) {
+					link_type = "long";
+					id = redirect.substr(redirect.indexOf("om=")+3);
+					id = id.substr(0, id.indexOf("&"));
+					forum = redirect.substr(redirect.indexOf("&forum=")+7);
+					forum = forum.substr(0, forum.indexOf("&"));
+				}
+				else {
+					link_type = "short";
+					id = redirect.substr(redirect.lastIndexOf("/")+1);
+					id = id.substr(0, id.indexOf("."));
+					forum = redirect.substr(redirect.indexOf("/nor/") + 5);
+					forum = forum.substr(0, forum.indexOf("/"));
+				}
+				//HTTPManager.GetPost(forum, id, link_type);
+				PageManager.changeLocation("post", {forum:forum, post:id, type:link_type}, true);
+			}
+			else {
+				HTTPEvents.fireEvent("onPostLoaded", Parser.parsePost(data));
+			}
 		},
 		error:function(a,b,c,d) {
 			HTTPEvents.fireEvent("onPostLoaded", {success:false});
@@ -242,6 +267,7 @@ HTTPManager.SendComment = function(forum, postId, replyingTo, title, content) {
 }
 
 HTTPManager.EditPost = function(forum, postId, replyId, topicType, title, content) {
+	title = title.replace("+", "%2b");
 	$.ajax({
 		url:"https://rotter.name/cgi-bin/nor/dcboard.cgi",
 		type:"POST",

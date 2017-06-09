@@ -351,6 +351,22 @@ li {
 	color:#000000;
 }
 
+#posts_list a.post_regular.transferred {
+	color:#000099;
+}
+
+#posts_list a.post_regular.transferred:visited {
+	color:#000099;
+}
+
+#posts_list a.post_regular.emphasized {
+	color:red;
+}
+
+#posts_list a.post_regular.emphasized:visited {
+	color:red;
+}
+
 #posts_list a.post_regular:visited {
 	color:#777777;
 }
@@ -409,7 +425,7 @@ li {
 }
 
 #modal_overlay {
-	position:absolute;
+	position:fixed;
 	left:0px;
 	right:0px;
 	top:0px;

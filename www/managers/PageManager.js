@@ -54,7 +54,7 @@ PageManager.parseHash = function() {
 			break;
 		case "edit_post":
 			PageManager.changePage("edit_post");
-			break;			
+			break;
 		case "comment_post":
 			PageManager.changePage("comment_post");
 			break;
@@ -75,7 +75,7 @@ PageManager.parseHash = function() {
 			break;
 		case "about":
 			PageManager.changePage("about");
-			break;			
+			break;
 		default:
 			PagesScripts.login.checkLogin();
 			break;
@@ -97,7 +97,7 @@ PageManager.goBack = function() {
 }
 
 PageManager.pageParams = "";
-PageManager.changeLocation = function (pageName, pageParams) {
+PageManager.changeLocation = function (pageName, pageParams, replace) {
 	PageManager.pageParams = "";
 	if (pageParams != null && typeof(pageParams) == "object") {
 		PageManager.pageParams += ",";
@@ -105,7 +105,10 @@ PageManager.changeLocation = function (pageName, pageParams) {
 			PageManager.pageParams += key + "=" + pageParams[key] + "&";
 		}
 	}
-	location.href = "index.html#" + pageName + PageManager.pageParams;
+	if (!replace)
+		location.href = "index.html#" + pageName + PageManager.pageParams;
+	else
+		location.replace("index.html#" + pageName + PageManager.pageParams);
 }
 
 PageManager.changePage = function (pageName, params) {
@@ -149,8 +152,8 @@ PageManager.showPopup = function(html) {
 	$("#modal_window").html(html);
 	$("#modal_overlay").css("display", "block");
 	$("#modal_overlay").css("height", $(window).height());
-	$("body").css("overflow", "hidden");
-	$("#modal_overlay").css("top", $("body").scrollTop() + "px");
+	/*$("body").css("overflow", "hidden");*/
+	$("#modal_overlay").css("top", "0px");
 	$("#modal_overlay").css("height", $(window).height());
 	$("#modal_window").css("top", (($(window).height() - $("#modal_window").height()) /2) + "px");
 	document.ontouchmove = function(e){ 

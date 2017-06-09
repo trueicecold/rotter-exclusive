@@ -6,8 +6,6 @@
 		<meta name="apple-mobile-web-app-capable" content="yes">
 		
         <!-- PhoneGap Script support -->
-		<script src="cordova.js" type="text/javascript"></script>
-		
 		<!-- MOBILE SCRIPTS -->
 		<script src="scripts/jquery-1.7.1.min.js"></script>
 		<script src="scripts/jquery.dotdotdot-1.5.3.js"></script>
@@ -17,6 +15,7 @@
 		<!-- MANAGERS SCRIPTS -->
 		<script src="managers/Config.js" type="text/javascript"></script>
 		<script src="managers/AdManager.js" type="text/javascript"></script>
+		<script src="managers/PushManager.js" type="text/javascript"></script>
 		<script src="managers/Rotter.js" type="text/javascript"></script>
 		<script src="managers/TemplateManager.js" type="text/javascript"></script>
 		<script src="managers/PageManager.js" type="text/javascript"></script>
@@ -62,13 +61,23 @@
 				}
 				AdManager.init();
 				AdManager.startTrack();
+				StatusBar.styleDefault();
+				PushManager.init();
+				init();
 			}
-        
-			window.addEventListener("load", function(e) {
+
+			function init() {
 				$.support.cors = true;
 				Rotter.init();
-			});
+			}
 			
+			if (!Config.DEBUG) {
+				$("head").append("<" + "script src='cordova.js' type='text/javascript'></" + "script>");
+			}
+			else {
+				window.addEventListener("load", init);
+			}
+
 			var lastMenuPress;
 			var menuPressTimeout;
 			var isScreenFull = false;

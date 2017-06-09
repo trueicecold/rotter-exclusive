@@ -19,7 +19,7 @@ UploadManager.imageUploadParams = {}
 UploadManager.imageUploadObject = "";
 
 UploadManager.onImageSelectSuccess = function(imageURI, success) {
-	if (success != null && success === true) {
+	//if (success != null && success === true) {
 		UploadManager.imageUploadOptions = new FileUploadOptions();
 		UploadManager.imageUploadOptions.fileKey="Filedata";
 	    UploadManager.imageUploadOptions.fileName=imageURI.substr(imageURI.lastIndexOf('/')+1);
@@ -33,10 +33,10 @@ UploadManager.onImageSelectSuccess = function(imageURI, success) {
 	        UploadManager.imageUploadObject.upload(imageURI, "http://www.imageshack.us/upload_api.php", UploadManager.onImageUploadSuccess, UploadManager.onImageUploadError, UploadManager.imageUploadOptions);
 	        AdManager.track("Image-Upload-Start");
 	    }
-	}
+	/*}
 	else {
-		window.resolveLocalFileSystemURI(imageURI, UploadManager.onImageResolveSuccess, UploadManager.onImageResolveError);
-	}
+		window.resolveLocalFileSystemURL(imageURI, UploadManager.onImageResolveSuccess, UploadManager.onImageResolveError);
+	}*/
 }
 
 UploadManager.onImageResolveSuccess = function(imageEntry) {

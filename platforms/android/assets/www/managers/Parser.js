@@ -66,7 +66,19 @@ Parser.parseForumPosts = function(str) {
 			forumPosts[i].title = forumPosts[i].title.substr(0, forumPosts[i].title.indexOf("<img"));
 		forumPosts[i].link = forumPosts[i].source.substr(forumPosts[i].source.indexOf('<a href="')+9);
 		forumPosts[i].link = forumPosts[i].link.substr(0, forumPosts[i].link.indexOf('">'));
-
+		
+		if (forumPosts[i].title.indexOf("הועבר:") > -1) {
+			forumPosts[i].title = forumPosts[i].title.substr(forumPosts[i].title.indexOf('.shtml">')+8);
+			forumPosts[i].title = "הועבר: " + forumPosts[i].title.substr(0, forumPosts[i].title.indexOf("</a>"));
+			forumPosts[i].transferred = true;
+		}
+		
+		if (forumPosts[i].title.indexOf("<span style='background-color:#ffff66'><font color=\"red\">") > -1) {
+			forumPosts[i].title = forumPosts[i].title.substr(forumPosts[i].title.indexOf("<span style='background-color:#ffff66'><font color=\"red\">")+57);
+			forumPosts[i].title = forumPosts[i].title.substr(0, forumPosts[i].title.indexOf("</a>"));
+			forumPosts[i].emphasized = true;
+		}
+		
 		forumPosts[i].anchor = forumPosts[i].icon.indexOf("anchor") > -1;
 		forumPosts[i].locked = forumPosts[i].icon.indexOf("locked") > -1;
 		
@@ -193,6 +205,16 @@ Parser.parsePost = function(str) {
 				if (Config.getParam("showImages") == null || Config.getParam("showImages") == 2) {
 					postContent = postContent.replace(/<img/ig, "<iimg");
 				}
+				
+				if (postContent.indexOf("<TABLE bgColor=fffaf4 border=1 cellSpacing=0 width=600 valign='middle' cellpading='0'>") > -1) {
+					postContent = postContent.replace("<TABLE bgColor=fffaf4 border=1 cellSpacing=0 width=600 valign='middle' cellpading='0'>", "<TABLE bgColor=fffaf4 border=1 cellSpacing=0 width=100% valign='middle' cellpading='0'>");
+				}
+				
+				if (postContent.indexOf('<div align="left"><FONT SIZE=-1><blockquote>') > -1 && postContent.indexOf("</FONT></div></span></blockquote>") == -1) {
+					postContent += "</blockquote></FONT></div>";
+				}
+				
+				postContent = postContent.replace('onClick="toggelSpoiler', 'onClick="PagesScripts.post.toggleSpoiler');
 				
 				postArray.push({number:postNumber, title:postTitle, content:postContent, writer:postWriter, writericon:postWriterIcon, username: postUsername, date:postDate, time:postTime, inreplyto:postInReplyTo, level: postLevel});
 			}

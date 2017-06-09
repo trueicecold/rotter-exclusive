@@ -76,7 +76,7 @@ PagesScripts.forum_posts.populatePostsList = function(source, fromCache) {
 				"FORUM_ID":PageManager.hashParams["forum"], 
 				"LINK_TYPE":source.posts[i].type, 
 				"POST_ID":source.posts[i].id, 
-				"POST_TITLE_CLASS":(source.posts[i].anchor) ? ((source.posts[i].locked) ? "post_anchor_locked" : "post_anchor") : "post_regular",
+				"POST_TITLE_CLASS":(source.posts[i].anchor) ? ((source.posts[i].locked) ? "post_anchor_locked" : "post_anchor") : ((source.posts[i].transferred) ? "post_regular transferred" : ((source.posts[i].emphasized) ? "post_regular emphasized" : "post_regular")),
 				"POST_TITLE":source.posts[i].title, 
 				"POST_TITLE_ESCAPE":source.posts[i].title.replace(/\"/ig, '\\\"').replace(/\'/ig, "\\\'"), 
 				"POST_ICON":source.posts[i].icon, 

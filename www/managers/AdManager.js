@@ -39,5 +39,7 @@ AdManager.startTrack = function() {
 }
 
 AdManager.track = function(name) {
-    window.ga.trackView(name);
+		if (!Config.DEBUG) {
+			window.ga.trackView(name);
+		}
 }

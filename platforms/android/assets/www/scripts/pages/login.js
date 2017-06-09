@@ -11,10 +11,14 @@ PagesScripts.login.initHandlers = function() {
 
 PagesScripts.login.onCheckLogin = function(event) {
 	if (event.data != null && event.data.success && event.data.success === true) {
+		console.log("LOGGED IN!");
 		Config.setParam("username", event.data.username);
-        PageManager.changeLocation("forums");
+		PageManager.changeLocation("forums");
+		PushManager.registerUsername(event.data.username);
 	}
 	else {
+		console.log("NOT LOGGED IN!");
+		PushManager.deleteTags();
 		Config.removeParam("username");
 		PageManager.changeLocation("login");
 	}
@@ -27,6 +31,7 @@ PagesScripts.login.login = function() {
 
 PagesScripts.login.onLogin = function(event) {
 	if (event.data != null && event.data.success != null && event.data.success === true) {
+		PushManager.registerUsername($("#login_username").val());
 		Config.setParam("username", $("#login_username").val());
 		PageManager.changeLocation("settings");
 	}

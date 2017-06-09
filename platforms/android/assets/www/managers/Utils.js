@@ -24,8 +24,8 @@ Utils.stringify = function (obj) {
 };
 
 Utils.isAndroid = function () {
-    if (window.device != null && window.device.platform != null)
-		return (window.device.platform == "Android");
+	if (!Config.DEBUG && window.device != null && window.device.platform != null)
+			return (window.device.platform == "Android");
 	else
 		return navigator.userAgent.toLowerCase().indexOf("android") > -1;
 }
@@ -41,6 +41,11 @@ Utils.HEBEncode = function(strText) {
 		return escape(String.fromCharCode(a.charCodeAt(0)-1264));
 	});
 	return strText;
+}
+
+Utils.escapeLogin = function(str) {
+	str = str.replace("&", "%26").replace("#", "%23");
+	return str;
 }
 
 Utils.isLoggedIn = function(str) {
@@ -87,7 +92,7 @@ Utils.replaceVar = function(str, var_names) {
 Utils.openNewBrowser = function(url) {
     if (url != null && url != "") {
 		if (Utils.isAndroid()) {
-			navigator.app.loadUrl(url, {openExternal:true});
+			window.open(url, "_system");
 		}
 		else {
 			window.location.href = url;

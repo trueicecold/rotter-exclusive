@@ -227,6 +227,17 @@ PagesScripts.post.onImageUploaded = function(event) {
 	}
 }
 
+PagesScripts.post.toggleSpoiler = function(spoilerId) {
+	if (document.getElementById("rand_spoiler_" + spoilerId).style.display == "none") {
+		document.getElementById("rand_spoiler_" + spoilerId).style.display = "block";
+		document.getElementById("spoiler_button_" + spoilerId).value = "הסתר ספוילר";
+	}
+	else {
+		document.getElementById("rand_spoiler_" + spoilerId).style.display = "none";
+		document.getElementById("spoiler_button_" + spoilerId).value = "הצג ספוילר";
+	}
+}
+
 PagesScripts.post.resizeContent = function() {
 	$("#postContent img").each(function() {
 		$(this).css("max-width", $(this).parents(".comment_item").width());
