@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>ApplicationProperties</key>
+	<dict>
+		<key>ApplicationPath</key>
+		<string>Applications/רוטר אקסקלוסיבי.app</string>
+		<key>CFBundleIdentifier</key>
+		<string>com.yanivnagar.rotterexclusive</string>
+		<key>CFBundleShortVersionString</key>
+		<string>1.0.0</string>
+		<key>CFBundleVersion</key>
+		<string>1.0.0</string>
+		<key>SigningIdentity</key>
+		<string>iPhone Developer: Yaniv Nagar (2D3X2CHG3M)</string>
+	</dict>
+	<key>ArchiveVersion</key>
+	<integer>2</integer>
+	<key>CreationDate</key>
+	<date>2017-06-11T16:15:14Z</date>
+	<key>Name</key>
+	<string>רוטר אקסקלוסיבי</string>
+	<key>SchemeName</key>
+	<string>רוטר אקסקלוסיבי</string>
+</dict>
+</plist>

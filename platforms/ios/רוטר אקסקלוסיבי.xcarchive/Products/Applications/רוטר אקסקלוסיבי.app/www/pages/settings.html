@@ -1,0 +1,77 @@
+﻿<table align="center">
+	<tr id="loginBlock">
+		<td>
+			אינך מחובר למערכת.</br>
+		</td>
+		<td style="padding-right:10px;">
+			<div class="button" onClick="PageManager.changeLocation('login');">התחבר</div>
+		</td>
+	</tr>
+	<tr id="logoutBlock">
+		<td>
+			הינך מחובר כ-<span id="loginUsername"></span>
+		</td>
+		<td style="padding-right:10px;">
+			<div class="button" onClick="PagesScripts.login.logout();">התנתק</div>
+		</td>
+	</tr>
+</table>
+<table align="center" cellpadding="0" cellspacing="4">
+	<tr>
+		<td width="80" valign="top" style="padding-top:5px;">הצג תמונות:</td>
+		<td width="190" valign="top">
+			<ul class="no_bullets" id="showImagesContainer">
+				<li>
+					<input onclick="PagesScripts.settings.setShowImages()" type="radio" name="showImages" id="showImages-all" value="0" checked="checked" />
+					<label for="showImages-all">הצג הכל</label>
+				</li>
+				<li>
+					<input onclick="PagesScripts.settings.setShowImages()" type="radio" name="showImages" id="showImages-nosigs" value="1"  />
+					<label for="showImages-nosigs">הסתר חתימות</label>
+				</li>
+				<li>
+					<input onclick="PagesScripts.settings.setShowImages()" type="radio" name="showImages" id="showImages-none" value="2"  />
+					<label for="showImages-none">הסתר הכל</label>
+				</li>
+			</fieldset>
+		</td>
+	</tr>
+</table>
+<table align="center" cellpadding="0" cellspacing="4">
+	<tr>
+		<td width="80" valign="top" style="padding-top:5px;">גודל פונט באשכול:</td>
+		<td width="190">
+			<ul class="no_bullets" id="postFontSizeContainer">
+				<li>
+					<table align="center" cellpadding="0" cellspacing="4">
+						<tr>
+							<td width="70" valign="middle">
+								<input type="number" style="width:60px;" id="postFontSize" onkeyup="PagesScripts.settings.setPostFontSize()"/>
+							</td>
+							<td valign="middle">
+								<span id="postFontSizeExample">טקסט לבדיקה</span>
+							</td>
+						</tr>
+					</table>
+				</li>
+			</ul>
+		</td>
+	</tr>
+</table>
+<table align="center" cellpadding="0" cellspacing="4">
+	<tr>
+		<td width="80" valign="top" style="padding-top:5px;">בדוק הודעות פרטיות:</td>
+		<td width="190" valign="top">
+			<ul class="no_bullets" id="checkPrivateMessagesContainer">
+				<li>
+					<input onclick="PagesScripts.settings.setPrivateMessages()" type="radio" name="checkPrivateMessages" value="0" checked="checked" />
+					<label style="font-size:11px;">לא</label>
+				</li>
+				<li style="padding-bottom:4px;">
+					<input onclick="PagesScripts.settings.setPrivateMessages()" type="radio" name="checkPrivateMessages" value="1" checked="checked" />
+					<label style="font-size:13px;">כן, כל <input type="number" onkeyup="PagesScripts.settings.setPrivateMessages()" id="privateMessageInterval" style="width:60px"/> דקות</label>
+				</li>
+			</fieldset>
+		</td>
+	</tr>
+</table>

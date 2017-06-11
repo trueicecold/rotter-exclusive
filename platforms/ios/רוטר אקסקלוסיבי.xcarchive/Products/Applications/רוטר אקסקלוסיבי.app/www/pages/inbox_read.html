@@ -1,0 +1,42 @@
+<div id="title">קריאת הודעה פרטית</div>
+<div id="content">
+	<table align="center" cellpadding="2" cellspacing="0" id="newMessageContainer" width="100%">
+		<tr>
+			<td colspan="2" style="padding-right:20px;padding-left:20px;">
+				<table cellpadding="2" cellspacing="0" style="width:100%;" border="1">
+					<tr>
+						<td valign="top" nowrap="true">
+							שם השולח:
+						</td>
+						<td id="inbox_sender" style="color:red" valign="top">
+						</td>
+					</tr>
+					<tr>
+						<td valign="top">
+							כותרת:
+						</td>
+						<td id="inbox_title" style="color:red;width:100%;" valign="top">
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2">
+							גוף ההודעה:
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2">
+							<div id="inbox_content_wrapper" style="width:100%;z-index:1;position:relative;height:220px;overflow:hidden;">
+								<div id="inbox_content" style="padding-bottom:30px;width:100%"></div>
+							</div>
+						</td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+	</table>
+</div>
+<div id="options">
+	<div class="button" id="post_send_button" disabled="disabled" onClick="PagesScripts.inbox.readMessageForReply()">הגב להודעה</div>
+	<div style="height:6px;"></div>
+	<div class="button" onClick="PageManager.hidePopup()">סגור</div>
+</div>

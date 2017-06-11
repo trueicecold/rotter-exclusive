@@ -1,0 +1,36 @@
+﻿<table align="center" style="font-size:13px;">
+	<tr>
+		<td>
+			<div style="text-align:right;">שם משתמש:</div>
+			<input id="login_username" type="text" style="width:230px;"/>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<div style="text-align:right;">סיסמא:</div>
+			<input id="login_password" type="password" style="width:230px;"/>
+		</td>
+	</tr>
+	<tr>
+		<td align="center">
+			<div id="loginButton" style="width:100px;text-align:center;" class="button" onClick="PagesScripts.login.login();">התחבר</div>
+		</td>
+	</tr>
+	<tr id="loginProgress" style="display:none">
+		<td valign="middle">
+			<table align="center">
+				<tr>
+					<td>
+						<img src="images/loader.gif"/>
+					</td>
+					<td>מתחבר</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+	<tr id="loginError" style="display:none">
+		<td valign="middle" align="center">
+			<div style="font-weight:bold;color:#ff0000;">שם משתמש/סיסמא לא נכונים</div>
+		</td>
+	</tr>			
+</table>
