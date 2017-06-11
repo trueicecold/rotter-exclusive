@@ -117,13 +117,14 @@ PageManager.changePage = function (pageName, params) {
 	$("#ajax_content").html(TemplateManager.GetTemplate(pageName));
 	if (PagesScripts[pageName] != null && PagesScripts[pageName]["initHandlers"] != null)
 		PagesScripts[pageName].initHandlers();
-	$("input, textarea").focus(function() {
-		$("#footer").hide();
-	});
-	$("input, textarea").blur(function() {
-		$("#footer").show();
-	});
 	PageManager.resizeAllComponents();
+	$("body").attr("page", pageName);
+    $("body[page!='settings']").find("input, textarea").focus(function() {
+        $("#footer").hide();
+    });
+    $("body[page!='settings']").find("input, textarea").blur(function() {
+        $("#footer").show();
+    });
 }
 
 PageManager.setHeader = function(title) {

@@ -18,7 +18,9 @@ PagesScripts.login.onCheckLogin = function(event) {
 		}
 		else
 		    PageManager.changeLocation("forums");
-		PushManager.registerUsername(event.data.username);
+        setTimeout(function() {
+            PushManager.registerUsername(this.data.username);
+        }.bind(event), 15000);
 	}
 	else {
 		console.log("NOT LOGGED IN!");
