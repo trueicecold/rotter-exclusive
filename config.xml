@@ -34,4 +34,5 @@
     <plugin name="cordova-plugin-statusbar" spec="^2.2.3" />
     <plugin name="cordova-plugin-device" spec="^1.1.6" />
     <plugin name="onesignal-cordova-plugin" spec="^2.1.1" />
+    <engine name="ios" spec="~4.4.0" />
 </widget>

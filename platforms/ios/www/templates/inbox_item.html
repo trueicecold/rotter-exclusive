@@ -1,0 +1,5 @@
+﻿<li onclick="PagesScripts.inbox.readMessage('[MESSAGE_ID]', '[MESSAGE_SENDER_ESCAPED]', '[MESSAGE_TITLE_ESCAPED]')" style="position:relative;">
+	<div class="delete_checkbox" type="checkbox" name="message_delete_index" value="[MESSAGE_ID]" onclick="event.preventDefault();event.stopPropagation();" ontouchstart="PagesScripts.inbox.setMessageToDelete(this, '[MESSAGE_ID]');"></div>
+	<h3>[MESSAGE_TITLE]</h3>
+	<p class="message_details">נכתב ע"י [MESSAGE_SENDER] ב- [MESSAGE_DATE] [MESSAGE_TIME]</p>
+</li>
