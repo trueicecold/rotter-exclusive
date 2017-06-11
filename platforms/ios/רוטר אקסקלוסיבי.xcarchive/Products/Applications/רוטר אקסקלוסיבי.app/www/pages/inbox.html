@@ -1,0 +1,18 @@
+<ul id="inbox_list"></ul>
+<div>
+	<table align="center" cellspacing="5" id="inboxPagingContainer" style="display:none;max-width:320px;">
+		<tr>
+			<td width="80"><div id="inboxPagePrev" class="button paging" ontouchstart="event.preventDefault();event.stopPropagation();PagesScripts.inbox.incPage(-1)"><</div></td>
+			<td width="100%" align="center">עמוד מספר <span id="inboxPageNum"></span></td>
+			<td width="80"><div id="inboxPageNext" class="button paging" ontouchstart="event.preventDefault();event.stopPropagation();PagesScripts.inbox.incPage(1)">></div></td>
+		</tr>
+		<tr>
+			<td colspan="3" height="20"></td>
+		</tr>
+	</table>
+</div>
+<div id="right_menu_buttons" style="display:none;">
+	<div type="menu_button" class="right_menu_gear" onClick="event.preventDefault();event.stopPropagation();PagesScripts.inbox.showMenuPopup()" ontouchstart="event.preventDefault();event.stopPropagation();PagesScripts.inbox.showMenuPopup()"></div>
+	<!--div type="menu_button" class="right_menu_trash" onClick="event.preventDefault();event.stopPropagation();PagesScripts.inbox.showDeletePopup()" ontouchstart="event.preventDefault();event.stopPropagation();PagesScripts.inbox.showDeletePopup()"></div>
+	<div type="menu_button" class="right_menu_refresh" onClick="event.preventDefault();event.stopPropagation();PagesScripts.inbox.refresh();"></div-->
+</div>
