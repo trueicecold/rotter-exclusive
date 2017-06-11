@@ -44,9 +44,9 @@ PushManager.didOpenRemoteNotificationCallBack = function(message) {
                 case "inbox":
                 case "post":
                     if (!PageManager.pageInited)
-                        PushManager.initPage = {page:message.notification.payload.additionalData.type, params:{}};
+                        PushManager.initPage = {page:message.notification.payload.additionalData.type, params:message.notification.payload.additionalData.params};
                     else
-                        PageManager.changeLocation(message.notification.payload.additionalData.type, params:{});
+                        PageManager.changeLocation(message.notification.payload.additionalData.type, params:message.notification.payload.additionalData.params);
                     break;
             }
         }

@@ -119,7 +119,7 @@
         <entry file="file://$PROJECT_DIR$/assets/www/managers/PushManager.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="438">
-              <caret line="51" column="9" selection-start-line="51" selection-start-column="9" selection-end-line="51" selection-end-column="9" />
+              <caret line="51" column="9" selection-start-line="0" selection-start-column="0" selection-end-line="53" selection-end-column="2" />
               <folding />
             </state>
           </provider>
@@ -2929,7 +2929,7 @@
     <entry file="file://$PROJECT_DIR$/assets/www/managers/PushManager.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="438">
-          <caret line="51" column="9" selection-start-line="51" selection-start-column="9" selection-end-line="51" selection-end-column="9" />
+          <caret line="51" column="9" selection-start-line="0" selection-start-column="0" selection-end-line="53" selection-end-column="2" />
           <folding />
         </state>
       </provider>
