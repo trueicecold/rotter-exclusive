@@ -46,7 +46,7 @@ PushManager.didOpenRemoteNotificationCallBack = function(message) {
                     if (!PageManager.pageInited)
                         PushManager.initPage = {page:message.notification.payload.additionalData.type, params:message.notification.payload.additionalData.params};
                     else
-                        PageManager.changeLocation(message.notification.payload.additionalData.type, params:message.notification.payload.additionalData.params);
+                        PageManager.changeLocation(message.notification.payload.additionalData.type, message.notification.payload.additionalData.params);
                     break;
             }
         }
