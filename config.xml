@@ -35,4 +35,7 @@
     <plugin name="cordova-plugin-device" spec="^1.1.6" />
     <plugin name="onesignal-cordova-plugin" spec="^2.1.1" />
     <engine name="ios" spec="~4.4.0" />
+    <preference name="DisallowOverscroll" value="true" />
+    <preference name="BackupWebStorage" value="local" />
+    <preference name="StatusBarOverlaysWebView" value="false" />
 </widget>
