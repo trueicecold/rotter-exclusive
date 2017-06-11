@@ -34,7 +34,8 @@ var message = {
   contents: {"en": "יש לך הודעה חדשה מאת אורי"},
   data: {"type":"inbox", params:{}},
 	filters: [
-	  	{"field": "tag", "key": "UserName", "relation": "=", "value": "ice cold"}
+	  	{"field": "tag", "key": "UserName", "relation": "=", "value": "ice cold"},
+			{"field": "tag", "key": "PushTagging/PushPrivate", "relation": "=", "value": "true"}
 	]
 };
 

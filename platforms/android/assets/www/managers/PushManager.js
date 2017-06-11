@@ -32,7 +32,17 @@ PushManager.deleteTags = function() {
 PushManager.registerUsername = function(username) {
 	if (!Config.DEBUG) {
 		window.plugins.OneSignal.sendTag("UserName", username.toLowerCase());
+		window.plugins.OneSignal.sendTag("PushPrivate", Config.getParam("pushPrivate"));
+        window.plugins.OneSignal.sendTag("PushTagging", Config.getParam("pushTagging"));
 	}
+}
+
+PushManager.updateTags = function() {
+    if (!Config.DEBUG) {
+        PushManager.registerUsername(Config.getParam("username"));
+		window.plugins.OneSignal.sendTag("PushPrivate", Config.getParam("pushPrivate"));
+		window.plugins.OneSignal.sendTag("PushTagging", Config.getParam("pushTagging"));
+    }
 }
 
 PushManager.didReceiveRemoteNotificationCallBack = function() {};

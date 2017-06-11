@@ -13,11 +13,33 @@ PagesScripts.settings.drawLogin = function() {
 		$("#loginBlock").hide();
 		$("#logoutBlock").show();
 		$("#loginUsername").html(Config.getParam("username"));
+		$("#push_settings").show();
 	}
 	else {
 		$("#loginBlock").show();
 		$("#logoutBlock").hide();
+		$("#push_settings").hide();
 	}
+
+	if (Config.getParam("pushPrivate") == "true")
+	    $("#pushPrivate").attr("checked", "checked");
+	else
+	    $("#pushPrivate").removeAttr("checked");
+
+    if (Config.getParam("pushTagging") == "true")
+	    $("#pushTagging").attr("checked", "checked");
+	else
+	    $("#pushTagging").removeAttr("checked");
+}
+
+PagesScripts.settings.setPushPrivate = function() {
+	Config.setParam("pushPrivate", ($("#pushPrivate").is(":checked")) ? true : false);
+	PushManager.updateTags();
+}
+
+PagesScripts.settings.setPushTagging = function() {
+	Config.setParam("pushTagging", ($("#pushTagging").is(":checked")) ? true : false);
+	PushManager.updateTags();
 }
 
 PagesScripts.settings.onLogout = function() {
