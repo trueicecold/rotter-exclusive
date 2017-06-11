@@ -250,6 +250,7 @@ HTTPManager.LoadPreEditPage = function(forum, postId, commentNum) {
 }
 
 HTTPManager.SendComment = function(forum, postId, replyingTo, title, content) {
+	title = title.replace(/\+/g, "%2b");
 	$.ajax({
 		url:"https://rotter.name/cgi-bin/nor/dcboard.cgi",
 		type:"POST",
@@ -267,7 +268,7 @@ HTTPManager.SendComment = function(forum, postId, replyingTo, title, content) {
 }
 
 HTTPManager.EditPost = function(forum, postId, replyId, topicType, title, content) {
-	title = title.replace("+", "%2b");
+	title = title.replace(/\+/g, "%2b");
 	$.ajax({
 		url:"https://rotter.name/cgi-bin/nor/dcboard.cgi",
 		type:"POST",
@@ -285,6 +286,7 @@ HTTPManager.EditPost = function(forum, postId, replyId, topicType, title, conten
 }
 
 HTTPManager.SendPost = function(forum, type, title, content) {
+	title = title.replace(/\+/g, "%2b");
 	$.ajax({
 		url:"https://rotter.name/cgi-bin/nor/dcboard.cgi",
 		type:"POST",

@@ -53,7 +53,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="UploadManager.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="UploadManager.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/assets/www/managers/UploadManager.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="193">
@@ -103,11 +103,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="HTTPManager.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="HTTPManager.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/assets/www/managers/HTTPManager.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="181">
-              <caret line="46" column="4" selection-start-line="46" selection-start-column="4" selection-end-line="46" selection-end-column="4" />
+            <state relative-caret-position="472">
+              <caret line="267" column="1" selection-start-line="267" selection-start-column="1" selection-end-line="267" selection-end-column="1" />
               <folding />
             </state>
           </provider>
@@ -2098,6 +2098,7 @@
         <option value="$PROJECT_DIR$/assets/www/managers/PushManager.js" />
         <option value="$PROJECT_DIR$/assets/www/scripts/pages/login.js" />
         <option value="$PROJECT_DIR$/assets/www/managers/UploadManager.js" />
+        <option value="$PROJECT_DIR$/assets/www/managers/HTTPManager.js" />
       </list>
     </option>
   </component>
@@ -2983,14 +2984,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/assets/www/managers/HTTPManager.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="181">
-          <caret line="46" column="4" selection-start-line="46" selection-start-column="4" selection-end-line="46" selection-end-column="4" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/assets/www/managers/PushManager.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="191">
@@ -3019,6 +3012,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="193">
           <caret line="49" column="1" selection-start-line="49" selection-start-column="1" selection-end-line="49" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/www/managers/HTTPManager.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="472">
+          <caret line="267" column="1" selection-start-line="267" selection-start-column="1" selection-end-line="267" selection-end-column="1" />
           <folding />
         </state>
       </provider>
