@@ -17,6 +17,7 @@ PageManager.init = function () {
 	});	
 }
 
+PageManager.pageInited = false;
 PageManager.hashParams = {};
 PageManager.parseHash = function() {
 	PageManager.removeHeaderOptions();
@@ -80,6 +81,7 @@ PageManager.parseHash = function() {
 			PagesScripts.login.checkLogin();
 			break;
 	}
+	PageManager.pageInited = true;
 }
 
 PageManager.goBack = function() {

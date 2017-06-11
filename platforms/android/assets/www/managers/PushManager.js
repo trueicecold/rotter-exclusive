@@ -36,4 +36,19 @@ PushManager.registerUsername = function(username) {
 }
 
 PushManager.didReceiveRemoteNotificationCallBack = function() {};
-PushManager.didOpenRemoteNotificationCallBack = function() {};
+PushManager.didOpenRemoteNotificationCallBack = function(message) {
+    if (!Config.DEBUG) {
+        if (message && message.notification && message.notification.payload && message.notification.payload.additionalData && message.notification.payload.additionalData.type) {
+            console.log(message.notification.payload.additionalData.type);
+            switch (message.notification.payload.additionalData.type) {
+                case "inbox":
+                case "post":
+                    if (!PageManager.pageInited)
+                        PushManager.initPage = {page:message.notification.payload.additionalData.type, params:{}};
+                    else
+                        PageManager.changeLocation(message.notification.payload.additionalData.type, params:{});
+                    break;
+            }
+        }
+    }
+};

@@ -11,9 +11,13 @@ PagesScripts.login.initHandlers = function() {
 
 PagesScripts.login.onCheckLogin = function(event) {
 	if (event.data != null && event.data.success && event.data.success === true) {
-		console.log("LOGGED IN!");
 		Config.setParam("username", event.data.username);
-		PageManager.changeLocation("forums");
+		if (PushManager.initPage) {
+		    PageManager.changeLocation(PushManager.initPage.page, PushManager.initPage.params);
+		    PushManager.initPage = null;
+		}
+		else
+		    PageManager.changeLocation("forums");
 		PushManager.registerUsername(event.data.username);
 	}
 	else {
