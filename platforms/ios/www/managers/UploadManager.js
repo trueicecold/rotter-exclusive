@@ -24,13 +24,15 @@ UploadManager.onImageSelectSuccess = function(imageURI, success) {
 		UploadManager.imageUploadOptions.fileKey="Filedata";
 	    UploadManager.imageUploadOptions.fileName=imageURI.substr(imageURI.lastIndexOf('/')+1);
 	    UploadManager.imageUploadOptions.mimeType=UploadManager.getExtensionFromFileName(UploadManager.imageUploadOptions.fileName);
+	    UploadManager.imageUploadOptions.chunkedMode = false;
 	    if (UploadManager.imageUploadOptions.mimeType != "") {
 			PageManager.showLoader("מעלה תמונה...");
             UploadManager.imageUploadParams.key = "1BFKOTUWc6f1323c8b92d49cea04fada35ccd7fe";
 			UploadManager.imageUploadParams.optsize = "resample";
+			UploadManager.imageUploadParams.format = "json";
 			UploadManager.imageUploadOptions.params = UploadManager.imageUploadParams;
 			UploadManager.imageUploadObject = new FileTransfer();
-	        UploadManager.imageUploadObject.upload(imageURI, "http://www.imageshack.us/upload_api.php", UploadManager.onImageUploadSuccess, UploadManager.onImageUploadError, UploadManager.imageUploadOptions);
+	        UploadManager.imageUploadObject.upload(imageURI, "https://post.imageshack.us/upload_api.php", UploadManager.onImageUploadSuccess, UploadManager.onImageUploadError, UploadManager.imageUploadOptions);
 	        AdManager.track("Image-Upload-Start");
 	    }
 	/*}
@@ -52,9 +54,8 @@ UploadManager.imageUploadResponse = "";
 UploadManager.onImageUploadSuccess = function(e) {
     PageManager.hideLoader();
 	try {
-		UploadManager.imageUploadResponse = $.parseXML(e.response);
-		UploadManager.imageUploadResponse = $(UploadManager.imageUploadResponse);
-		UploadEvents.fireEvent("onImageUploaded", {success:true, url:UploadManager.imageUploadResponse.find("image_link").text()});
+		UploadManager.imageUploadResponse = JSON.parse(e.response);
+		UploadEvents.fireEvent("onImageUploaded", {success:true, url:UploadManager.imageUploadResponse.links.image_link.replace("http://", "https://")});
 	}
 	catch(e) {
 		alert("שגיאה בהעלאת התמונה.");

@@ -32,7 +32,17 @@ PushManager.deleteTags = function() {
 PushManager.registerUsername = function(username) {
 	if (!Config.DEBUG) {
 		window.plugins.OneSignal.sendTag("UserName", username.toLowerCase());
+		window.plugins.OneSignal.sendTag("PushPrivate", Config.getParam("pushPrivate"));
+        window.plugins.OneSignal.sendTag("PushTagging", Config.getParam("pushTagging"));
 	}
+}
+
+PushManager.updateTags = function() {
+    if (!Config.DEBUG) {
+        PushManager.registerUsername(Config.getParam("username"));
+		window.plugins.OneSignal.sendTag("PushPrivate", Config.getParam("pushPrivate"));
+		window.plugins.OneSignal.sendTag("PushTagging", Config.getParam("pushTagging"));
+    }
 }
 
 PushManager.didReceiveRemoteNotificationCallBack = function() {};
@@ -44,9 +54,9 @@ PushManager.didOpenRemoteNotificationCallBack = function(message) {
                 case "inbox":
                 case "post":
                     if (!PageManager.pageInited)
-                        PushManager.initPage = {page:message.notification.payload.additionalData.type, params:{}};
+                        PushManager.initPage = {page:message.notification.payload.additionalData.type, params:message.notification.payload.additionalData.params};
                     else
-                        PageManager.changeLocation(message.notification.payload.additionalData.type, params:{});
+                        PageManager.changeLocation(message.notification.payload.additionalData.type, message.notification.payload.additionalData.params);
                     break;
             }
         }

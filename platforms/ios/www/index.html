@@ -52,9 +52,6 @@
 			
 			function onDeviceReady() {
 				if (Utils.isAndroid()) {
-					document.addEventListener("menubutton", function(e) {
-						toggleView();
-					}, false);
 					document.addEventListener("backbutton", function(e) {
 						PageManager.goBack();
 					}, false);
@@ -76,55 +73,6 @@
 			}
 			else {
 				window.addEventListener("load", init);
-			}
-
-			var lastMenuPress;
-			var menuPressTimeout;
-			var isScreenFull = false;
-			function toggleView() {
-				if (lastMenuPress == null || (new Date()).getTime()-lastMenuPress > 300 || !Utils.isAndroid()) {
-					if (!isScreenFull) {
-						if (menuPressTimeout != null)
-							clearTimeout(menuPressTimeout);
-						menuPressTimeout = setTimeout(function() {
-							if ($("#footer").css("display") == "block") {
-								$("#loading_overlay").css("bottom", "0px");
-								$("#ajax_content").css("paddingBottom", "0px");
-								$("#footer").hide();
-							}
-							else {
-								$("#loading_overlay").css("bottom", "54px");
-								$("#ajax_content").css("paddingBottom", "54px");
-								$("#footer").show();
-							}
-						}, 300);
-					}
-				}
-				else {
-					if (menuPressTimeout != null)
-						clearTimeout(menuPressTimeout);
-					menuPressTimeout = setTimeout(function() {
-						if ($("#footer").css("display") == "block") {
-							$("#loading_overlay").css("top", "0px");
-							$("#loading_overlay").css("bottom", "0px");
-							$("#ajax_content").css("paddingBottom", "0px");
-							$("#ajax_content").css("paddingTop", "0px");
-							$("#footer").hide();
-							$("#header").hide();
-							isScreenFull = true;
-						}
-						else {
-							$("#loading_overlay").css("top", "44px");
-							$("#loading_overlay").css("bottom", "54px");
-							$("#ajax_content").css("paddingTop", "44px");
-							$("#ajax_content").css("paddingBottom", "54px");
-							$("#footer").show();
-							$("#header").show();
-							isScreenFull = false;						
-						}
-					}, 300);
-				}
-				lastMenuPress = (new Date()).getTime();
 			}
         </script>
     </head>
@@ -156,7 +104,7 @@
 						<div style="width:74px;overflow-x:hidden;padding-right:0px;" id="header_right_container">
 						</div>
 					</td>
-					<td><div id="header_title" ontouchstart="toggleView();"></div></td>
+					<td><div id="header_title"></div></td>
 					<td id="header_left_container" align="left" style="width:70px;"><div class="header_button" style="width:35px;" id="header_button" onclick="event.preventDefault();event.stopPropagation();PageManager.goBack();">חזרה</div></td>
 				</tr>
 			</table>
