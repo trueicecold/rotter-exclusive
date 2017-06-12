@@ -35,7 +35,7 @@ var message = {
   data: {"type":"inbox", params:{}},
 	filters: [
 	  	{"field": "tag", "key": "UserName", "relation": "=", "value": "ice cold"},
-			{"field": "tag", "key": "PushTagging/PushPrivate", "relation": "=", "value": "true"}
+			{"field": "tag", "key": "PushTagging", "relation": "=", "value": "true"}
 	]
 };
 

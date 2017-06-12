@@ -9,7 +9,7 @@ AdManager.init = function() {
             };
         } else if(/(ipod|iphone|ipad)/i.test(navigator.userAgent)) { // for ios
             admobid = {
-                banner: 'ca-app-pub-1200621436361020/9407939791'
+                banner: 'ca-app-pub-3239881464377321/1060322391'
             };
         }
 
