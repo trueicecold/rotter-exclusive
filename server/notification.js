@@ -32,10 +32,10 @@ var sendNotification = function(data) {
 var message = { 
   app_id: "5f25aa69-a1b2-4487-b287-d3de9a774f92",
   contents: {"en": "יש לך הודעה חדשה מאת אורי"},
-  data: {"type":"inbox", params:{}},
+  data: {"type":"post", params:{post:"41748", forum:"chat", type:"short"}},
 	filters: [
 	  	{"field": "tag", "key": "UserName", "relation": "=", "value": "ice cold"},
-			{"field": "tag", "key": "PushTagging", "relation": "=", "value": "true"}
+			{"field": "tag", "key": "PushPrivate", "relation": "=", "value": "true"}
 	]
 };
 
