@@ -91,6 +91,7 @@ Utils.replaceVar = function(str, var_names) {
 
 Utils.openNewBrowser = function(url) {
     if (url != null && url != "") {
+		url = Utils.constructURL(url);
 		if (Utils.isAndroid()) {
 			window.open(url, "_system");
 		}
@@ -98,6 +99,10 @@ Utils.openNewBrowser = function(url) {
 			window.location.href = url;
 		}
 	}
+}
+
+Utils.constructURL = function(url) {
+	return "http://redirect.viglink.com/?key=" + Config.VIGLINK + "&format=go&loc=" + encodeURIComponent(HTTPManager.post_ref_url) + "&out=" + encodeURIComponent(url) + "&cuid=MOBILE_APP";
 }
 
 Utils.writeIFrameWrapper = function(html) {

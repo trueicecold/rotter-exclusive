@@ -34,12 +34,12 @@ PagesScripts.settings.drawLogin = function() {
 
 PagesScripts.settings.setPushPrivate = function() {
 	Config.setParam("pushPrivate", ($("#pushPrivate").is(":checked")) ? true : false);
-	PushManager.updateTags();
+	/*PushManager.updateTags();*/
 }
 
 PagesScripts.settings.setPushTagging = function() {
 	Config.setParam("pushTagging", ($("#pushTagging").is(":checked")) ? true : false);
-	PushManager.updateTags();
+	/*PushManager.updateTags();*/
 }
 
 PagesScripts.settings.onLogout = function() {

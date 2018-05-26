@@ -7,9 +7,6 @@
         "files": {}
     },
     "installed_plugins": {
-        "cordova-plugin-admobpro": {
-            "PACKAGE_NAME": "com.yanivnagar.rotterexclusive"
-        },
         "cordova-plugin-camera": {
             "CAMERA_USAGE_DESCRIPTION": " ",
             "PHOTOLIBRARY_USAGE_DESCRIPTION": " ",
@@ -47,13 +44,16 @@
         },
         "onesignal-cordova-plugin": {
             "PACKAGE_NAME": "com.yanivnagar.rotterexclusive"
+        },
+        "cordova-plugin-admobpro": {
+            "PACKAGE_NAME": "com.yanivnagar.rotterexclusive"
         }
     },
     "dependent_plugins": {
-        "cordova-plugin-extension": {
+        "cordova-plugin-compat": {
             "PACKAGE_NAME": "com.yanivnagar.rotterexclusive"
         },
-        "cordova-plugin-compat": {
+        "cordova-plugin-extension": {
             "PACKAGE_NAME": "com.yanivnagar.rotterexclusive"
         }
     }

@@ -1,37 +1,11 @@
 cordova.define('cordova/plugin_list', function(require, exports, module) {
 module.exports = [
     {
-        "id": "cordova-plugin-inappbrowser.inappbrowser",
-        "file": "plugins/cordova-plugin-inappbrowser/www/inappbrowser.js",
-        "pluginId": "cordova-plugin-inappbrowser",
-        "clobbers": [
-            "cordova.InAppBrowser.open",
-            "window.open"
-        ]
-    },
-    {
-        "id": "cordova-plugin-splashscreen.SplashScreen",
-        "file": "plugins/cordova-plugin-splashscreen/www/splashscreen.js",
-        "pluginId": "cordova-plugin-splashscreen",
-        "clobbers": [
-            "navigator.splashscreen"
-        ]
-    },
-    {
         "id": "cordova-plugin-admobpro.AdMob",
         "file": "plugins/cordova-plugin-admobpro/www/AdMob.js",
         "pluginId": "cordova-plugin-admobpro",
         "clobbers": [
             "window.AdMob"
-        ]
-    },
-    {
-        "id": "cordova-plugin-google-analytics.UniversalAnalytics",
-        "file": "plugins/cordova-plugin-google-analytics/www/analytics.js",
-        "pluginId": "cordova-plugin-google-analytics",
-        "clobbers": [
-            "analytics",
-            "ga"
         ]
     },
     {
@@ -64,6 +38,14 @@ module.exports = [
         "pluginId": "cordova-plugin-camera",
         "clobbers": [
             "CameraPopoverHandle"
+        ]
+    },
+    {
+        "id": "cordova-plugin-device.device",
+        "file": "plugins/cordova-plugin-device/www/device.js",
+        "pluginId": "cordova-plugin-device",
+        "clobbers": [
+            "device"
         ]
     },
     {
@@ -240,6 +222,40 @@ module.exports = [
         "runs": true
     },
     {
+        "id": "cordova-plugin-file-transfer.FileTransferError",
+        "file": "plugins/cordova-plugin-file-transfer/www/FileTransferError.js",
+        "pluginId": "cordova-plugin-file-transfer",
+        "clobbers": [
+            "window.FileTransferError"
+        ]
+    },
+    {
+        "id": "cordova-plugin-file-transfer.FileTransfer",
+        "file": "plugins/cordova-plugin-file-transfer/www/FileTransfer.js",
+        "pluginId": "cordova-plugin-file-transfer",
+        "clobbers": [
+            "window.FileTransfer"
+        ]
+    },
+    {
+        "id": "cordova-plugin-google-analytics.UniversalAnalytics",
+        "file": "plugins/cordova-plugin-google-analytics/www/analytics.js",
+        "pluginId": "cordova-plugin-google-analytics",
+        "clobbers": [
+            "analytics",
+            "ga"
+        ]
+    },
+    {
+        "id": "cordova-plugin-inappbrowser.inappbrowser",
+        "file": "plugins/cordova-plugin-inappbrowser/www/inappbrowser.js",
+        "pluginId": "cordova-plugin-inappbrowser",
+        "clobbers": [
+            "cordova.InAppBrowser.open",
+            "window.open"
+        ]
+    },
+    {
         "id": "cordova-plugin-media-capture.CaptureAudioOptions",
         "file": "plugins/cordova-plugin-media-capture/www/CaptureAudioOptions.js",
         "pluginId": "cordova-plugin-media-capture",
@@ -308,19 +324,11 @@ module.exports = [
         "runs": true
     },
     {
-        "id": "cordova-plugin-file-transfer.FileTransferError",
-        "file": "plugins/cordova-plugin-file-transfer/www/FileTransferError.js",
-        "pluginId": "cordova-plugin-file-transfer",
+        "id": "cordova-plugin-splashscreen.SplashScreen",
+        "file": "plugins/cordova-plugin-splashscreen/www/splashscreen.js",
+        "pluginId": "cordova-plugin-splashscreen",
         "clobbers": [
-            "window.FileTransferError"
-        ]
-    },
-    {
-        "id": "cordova-plugin-file-transfer.FileTransfer",
-        "file": "plugins/cordova-plugin-file-transfer/www/FileTransfer.js",
-        "pluginId": "cordova-plugin-file-transfer",
-        "clobbers": [
-            "window.FileTransfer"
+            "navigator.splashscreen"
         ]
     },
     {
@@ -330,41 +338,24 @@ module.exports = [
         "clobbers": [
             "window.StatusBar"
         ]
-    },
-    {
-        "id": "cordova-plugin-device.device",
-        "file": "plugins/cordova-plugin-device/www/device.js",
-        "pluginId": "cordova-plugin-device",
-        "clobbers": [
-            "device"
-        ]
-    },
-    {
-        "id": "onesignal-cordova-plugin.OneSignal",
-        "file": "plugins/onesignal-cordova-plugin/www/OneSignal.js",
-        "pluginId": "onesignal-cordova-plugin",
-        "clobbers": [
-            "OneSignal"
-        ]
     }
 ];
 module.exports.metadata = 
 // TOP OF METADATA
 {
-    "cordova-plugin-inappbrowser": "1.7.1",
-    "cordova-plugin-whitelist": "1.3.2",
-    "cordova-plugin-splashscreen": "4.0.3",
-    "cordova-plugin-extension": "1.5.1",
-    "cordova-plugin-admobpro": "2.29.0",
-    "cordova-plugin-google-analytics": "1.8.2",
+    "cordova-plugin-extension": "1.5.3",
+    "cordova-plugin-admobpro": "2.29.29",
     "cordova-plugin-compat": "1.1.0",
     "cordova-plugin-camera": "2.4.1",
-    "cordova-plugin-file": "4.3.3",
-    "cordova-plugin-media-capture": "1.4.3",
-    "cordova-plugin-file-transfer": "1.6.3",
-    "cordova-plugin-statusbar": "2.2.3",
     "cordova-plugin-device": "1.1.6",
-    "onesignal-cordova-plugin": "2.1.1"
+    "cordova-plugin-file": "4.3.3",
+    "cordova-plugin-file-transfer": "1.6.3",
+    "cordova-plugin-google-analytics": "1.8.2",
+    "cordova-plugin-inappbrowser": "1.7.1",
+    "cordova-plugin-media-capture": "1.4.3",
+    "cordova-plugin-splashscreen": "4.0.3",
+    "cordova-plugin-statusbar": "2.2.3",
+    "cordova-plugin-whitelist": "1.3.2"
 };
 // BOTTOM OF METADATA
 });

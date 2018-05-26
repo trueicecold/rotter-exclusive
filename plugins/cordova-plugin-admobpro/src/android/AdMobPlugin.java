@@ -180,9 +180,11 @@ public class AdMobPlugin extends GenericAdPlugin {
     if(view instanceof PublisherAdView) {
       PublisherAdView dfpView = (PublisherAdView) view;
       return dfpView.getAdSize();
-    } else {
+    } else if(view instanceof AdView) {
       AdView admobView = (AdView) view;
       return admobView.getAdSize();
+    } else {
+      return new AdSize(0,0);
     }
   }
 
@@ -427,7 +429,7 @@ protected void __showInterstitial(Object interstitial) {
     if(mLocation != null) builder.setLocation(mLocation);
     if(mForFamily != null) {
       Bundle extras = new Bundle();
-      extras.putBoolean("is_designed_for_families", ("yes".compareToIgnoreCase(mForChild) == 0));
+      extras.putBoolean("is_designed_for_families", ("yes".compareToIgnoreCase(mForFamily) == 0));
       builder.addNetworkExtrasBundle(AdMobAdapter.class, extras);
     }
     if(mForChild != null) {

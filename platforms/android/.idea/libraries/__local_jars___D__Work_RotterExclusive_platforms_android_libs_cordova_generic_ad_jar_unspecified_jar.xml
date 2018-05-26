@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="__local_jars__:D.\Work\RotterExclusive\platforms\android\libs\cordova-generic-ad.jar:unspecified@jar">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/libs/cordova-generic-ad.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

@@ -37,7 +37,7 @@ From May 2015, Cordova team announced the deprecation of Cordova registry, and s
 
 Platforms supported:
 - [x] Android, via SDK v10.0.1 (part of Google Play service, see [Release Notes](https://developers.google.com/admob/android/rel-notes))
-- [x] iOS, via SDK v7.15.0 (with bitcode support, see [Release Notes](https://developers.google.com/admob/ios/rel-notes))
+- [x] iOS, via SDK v7.25.0 (see [Release Notes](https://developers.google.com/admob/ios/rel-notes))
 - [x] Windows Phone, via SDK v6.5.13 (see [Release Notes](https://developers.google.com/admob/wp/rel-notes))
 - [x] Amazon-FireOS, via Android SDK (part of Google Play service)
 
@@ -108,6 +108,10 @@ Wanna quickly see the mobile ad on your simulator or device? Try the following c
 ```bash
 cordova plugin add cordova-plugin-admobpro
 ```
+Or,
+```bash
+cordova plugin add cordova-plugin-admobpro-firebase
+```
 
 If use other tools or online build services, see:
 * [x] Apache Cordova CLI, v3.0+ ([How To ...](https://github.com/floatinghotpot/cordova-admob-pro/wiki/01.-How-to-Use-with-Cordova-CLI))
@@ -116,13 +120,14 @@ If use other tools or online build services, see:
 * [x] Google Mobile Chrome App ([How To ...](https://github.com/floatinghotpot/cordova-admob-pro/wiki/05.-How-to-Use-with-Mobile-Chrome-App))
 * [x] Adobe PhoneGap Build. ([How To ...](https://github.com/floatinghotpot/cordova-admob-pro/wiki/00.-How-To-Use-with-PhoneGap-Build))
 * [x] Meteor ([How To ...](https://github.com/floatinghotpot/cordova-admob-pro/wiki/06.-How-To-Use-with-Meteor))
-* [x] Ionic, [Ionic Demo](https://github.com/jaivehall/admob-ionic-demo)
-* [x] Ionic2, [Ionic2 Demo](https://github.com/jaivehall/admob-ionic2-demo)
+* [x] Ionic V1, [Ionic V1 Demo](https://github.com/jaivehall/admob-ionic-demo)
+* [x] Ionic, [Ionic Demo](https://github.com/jaivehall/admob-ionic2-demo)
 
-What's difference of the 3 plugin IDs, which one shall I use ?
+What's difference of the 4 plugin IDs, which one shall I use ?
 * com.google.cordova.admob
-* cordova-plugin-admobpro
 * cordova-plugin-admob
+* cordova-plugin-admobpro
+* cordova-plugin-admobpro-firebase
 
 Read: [Difference of Plugin ID](https://github.com/floatinghotpot/cordova-admob-pro/wiki/Difference-of-Plugin-IDs)
 
@@ -190,7 +195,7 @@ Optional mediations to increase your revenue (Read about [AdMob Mediation Networ
 ```bash
 cordova plugin add cordova-plugin-admob-facebook
 cordova plugin add cordova-plugin-admob-flurry
-cordova plugin add cordova-plugin-admob-iad
+cordova plugin add cordova-plugin-admob-unityads
 cordova plugin add cordova-plugin-admob-inmobi
 cordova plugin add cordova-plugin-admob-mmedia
 cordova plugin add cordova-plugin-admob-mobfox
@@ -257,8 +262,8 @@ Other Documentations:
 * [Notice for Android Proguard](https://github.com/floatinghotpot/cordova-admob-pro/wiki/Notice-for-Android-Proguard)
 
 Demo projects:
-* [App demo for Ionic](https://github.com/jaivehall/admob-ionic-demo), by Jaive
-* [App demo for Ionic2](https://github.com/jaivehall/admob-ionic2-demo), by Jaive
+* [App demo for Ionic V1](https://github.com/jaivehall/admob-ionic-demo), by Jaive
+* [App demo for Ionic](https://github.com/jaivehall/admob-ionic2-demo), by Jaive
 * [Game demo using phaser game engine](https://github.com/floatinghotpot/admob-demo-game-phaser/tree/master/demo)
 * [Game demo using PIXI game engine](https://github.com/floatinghotpot/admob-demo-game-pixi/tree/master/demo)
 
@@ -316,7 +321,7 @@ RPM (revenue per 1000 impression) |  US$ 0.5~4 | US$ 10~50
 
 ⚠：Remember Google's slogan: "Don't be evil". Invalid usage violating Google rules, may cause your AdMob account suspended ! 
 
-* AdMob publisher may NOT abuse or encourage abuse any Google products, including Google Play, YouTube or Bolgger, incuding allow user downloading YouTube video, or embed YouTube video in your own apps.
+* AdMob publisher may NOT abuse or encourage abuse any Google products, including Google Play, YouTube or Blogger, incuding allow user downloading YouTube video, or embed YouTube video in your own apps.
 
 * Publishers may NOT click their own ads or use any means to inflate impressions and/or clicks artificially, including manual methods. Testing your own ads by clicking on them is not allowed.
 

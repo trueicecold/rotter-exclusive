@@ -7,40 +7,37 @@
         "files": {}
     },
     "installed_plugins": {
-        "cordova-plugin-inappbrowser": {
-            "PACKAGE_NAME": "com.yanivnagar.rotterexclusive"
-        },
-        "cordova-plugin-whitelist": {
-            "PACKAGE_NAME": "com.yanivnagar.rotterexclusive"
-        },
-        "cordova-plugin-splashscreen": {
-            "PACKAGE_NAME": "com.yanivnagar.rotterexclusive"
-        },
         "cordova-plugin-admobpro": {
-            "PACKAGE_NAME": "com.yanivnagar.rotterexclusive"
-        },
-        "cordova-plugin-google-analytics": {
             "PACKAGE_NAME": "com.yanivnagar.rotterexclusive"
         },
         "cordova-plugin-camera": {
             "PACKAGE_NAME": "com.yanivnagar.rotterexclusive"
         },
-        "cordova-plugin-file": {
+        "cordova-plugin-device": {
             "PACKAGE_NAME": "com.yanivnagar.rotterexclusive"
         },
-        "cordova-plugin-media-capture": {
+        "cordova-plugin-file": {
             "PACKAGE_NAME": "com.yanivnagar.rotterexclusive"
         },
         "cordova-plugin-file-transfer": {
             "PACKAGE_NAME": "com.yanivnagar.rotterexclusive"
         },
+        "cordova-plugin-google-analytics": {
+            "PACKAGE_NAME": "com.yanivnagar.rotterexclusive"
+        },
+        "cordova-plugin-inappbrowser": {
+            "PACKAGE_NAME": "com.yanivnagar.rotterexclusive"
+        },
+        "cordova-plugin-media-capture": {
+            "PACKAGE_NAME": "com.yanivnagar.rotterexclusive"
+        },
+        "cordova-plugin-splashscreen": {
+            "PACKAGE_NAME": "com.yanivnagar.rotterexclusive"
+        },
         "cordova-plugin-statusbar": {
             "PACKAGE_NAME": "com.yanivnagar.rotterexclusive"
         },
-        "cordova-plugin-device": {
-            "PACKAGE_NAME": "com.yanivnagar.rotterexclusive"
-        },
-        "onesignal-cordova-plugin": {
+        "cordova-plugin-whitelist": {
             "PACKAGE_NAME": "com.yanivnagar.rotterexclusive"
         }
     },

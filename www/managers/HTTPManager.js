@@ -4,7 +4,7 @@ var HTTPEvents = new EventTarget();
 jQuery.ajaxSetup({ 
 	'beforeSend': function(req) {
 		req.setRequestHeader("FromApp", "true")
-	} 
+	}
 })
 
 HTTPManager.init = function () {
@@ -13,9 +13,12 @@ HTTPManager.init = function () {
 HTTPManager.CheckLogin = function (username, password) {
 	$.ajax({
 		url:"https://rotter.name/cgi-bin/nor/dcboard.cgi",
-		dataType:"text",
+		dataType:"binary",
+		processData: false,
 		success:function(data) {
-			HTTPEvents.fireEvent("onCheckLogin", Parser.parseCheckLogin(data));
+			HTTPManager.iconv(data, function(data) {
+				HTTPEvents.fireEvent("onCheckLogin", Parser.parseCheckLogin(data));
+			});
 		},
 		error:function(a,b,c,d) {
 			HTTPEvents.fireEvent("onCheckLogin", {success:false});
@@ -29,10 +32,13 @@ HTTPManager.Login = function (username, password) {
 	$.ajax({
 		url:"https://rotter.name/cgi-bin/nor/dcboard.cgi?az=login",
 		type:"GET",
-		dataType:"text",
+		dataType:"binary",
+		processData: false,
 		data:"cmd=login&" + Utils.HEBEncode("שם-משתמש") + "=" + Utils.HEBEncode(Utils.escapeLogin(username)) + "&" + Utils.HEBEncode("סיסמא") + "=" + Utils.HEBEncode(Utils.escapeLogin(password)) + "&login=" + Utils.HEBEncode("קליק"),
 		success:function(data) {
-			HTTPEvents.fireEvent("onLogin", Parser.parseLogin(data));
+			HTTPManager.iconv(data, function(data) {
+				HTTPEvents.fireEvent("onLogin", Parser.parseLogin(data));
+			});
 		},
 		error:function(a,b,c,d) {
 			HTTPEvents.fireEvent("onLogin", {success:false});
@@ -44,12 +50,15 @@ HTTPManager.Login = function (username, password) {
 
 HTTPManager.Logout = function () {
 	console.log("LOGOUT!");
-	PushManager.deleteTags();
+	/*PushManager.deleteTags();*/
 	$.ajax({
 		url:"https://rotter.name/cgi-bin/nor/dcboard.cgi?az=logout",
-		dataType:"text",
+		dataType:"binary",
+		processData: false,
 		success:function(data) {
-			HTTPEvents.fireEvent("onLogout");
+			HTTPManager.iconv(data, function(data) {
+				HTTPEvents.fireEvent("onLogout");
+			});
 		},
 		error:function(a,b,c,d) {
 			HTTPEvents.fireEvent("onLogout");
@@ -60,9 +69,12 @@ HTTPManager.Logout = function () {
 HTTPManager.GetForumList = function() {
 	$.ajax({
 		url:"https://rotter.name/cgi-bin/nor/dcboard.cgi",
-		dataType:"text",
+		dataType:"binary",
+		processData: false,
 		success:function(data) {
-			HTTPEvents.fireEvent("onForumList", Parser.parseForumList(data));
+			HTTPManager.iconv(data, function(data) {
+				HTTPEvents.fireEvent("onForumList", Parser.parseForumList(data));
+			});
 		},
 		error:function(a,b,c,d) {
 			HTTPEvents.fireEvent("onForumList", {success:false});
@@ -72,12 +84,25 @@ HTTPManager.GetForumList = function() {
 	});
 }
 
+HTTPManager.iconv = function(data, callback) {
+	var reader = new FileReader();
+	reader.onload = function(e) {
+		callback(e.target.result);
+		reader.onload = null;
+		delete reader;
+	};
+	reader.readAsText(data, "cp1255");
+}
+
 HTTPManager.GetForumPosts = function(forum, page) {
 	$.ajax({
 		url:"https://rotter.name/cgi-bin/nor/dcboard.cgi?az=list&forum=" + forum + "&mm=" + page,
-		dataType:"text",
+		dataType:"binary",
+		processData: false,
 		success:function(data) {
-			HTTPEvents.fireEvent("onForumPosts", Parser.parseForumPosts(data));
+			HTTPManager.iconv(data, function(data) {
+				HTTPEvents.fireEvent("onForumPosts", Parser.parseForumPosts(data));
+			});
 		},
 		error:function(a,b,c,d) {
 			HTTPEvents.fireEvent("onForumPosts", {success:false});
@@ -88,34 +113,38 @@ HTTPManager.GetForumPosts = function(forum, page) {
 }
 
 HTTPManager.GetPost = function(forum, id, link_type) {
+	HTTPManager.post_ref_url = (link_type=="long") ? "https://rotter.name/cgi-bin/nor/dcboard.cgi?az=show_thread&om=" + id + "&forum=" + forum + "&viewmode=all" : "https://rotter.name/nor/" + forum + "/" + id + ".shtml";
 	$.ajax({
-		url:(link_type=="long") ? "https://rotter.name/cgi-bin/nor/dcboard.cgi?az=show_thread&om=" + id + "&forum=" + forum + "&viewmode=all" : "https://rotter.name/nor/" + forum + "/" + id + ".shtml",
-		dataType:"text",
+		url:HTTPManager.post_ref_url,
+		dataType:"binary",
+		processData: false,
 		success:function(data) {
-			if (data.indexOf('<meta http-equiv="refresh" content="0') > -1) {
-				var redirect = data.substr(data.indexOf("URL=") + 4);
-				redirect = redirect.substr(0, redirect.indexOf('"'));
-				
-				if (redirect.indexOf("om=") > -1) {
-					link_type = "long";
-					id = redirect.substr(redirect.indexOf("om=")+3);
-					id = id.substr(0, id.indexOf("&"));
-					forum = redirect.substr(redirect.indexOf("&forum=")+7);
-					forum = forum.substr(0, forum.indexOf("&"));
+			HTTPManager.iconv(data, function(data) {
+				if (data.indexOf('<meta http-equiv="refresh" content="0') > -1) {
+					var redirect = data.substr(data.indexOf("URL=") + 4);
+					redirect = redirect.substr(0, redirect.indexOf('"'));
+					
+					if (redirect.indexOf("om=") > -1) {
+						link_type = "long";
+						id = redirect.substr(redirect.indexOf("om=")+3);
+						id = id.substr(0, id.indexOf("&"));
+						forum = redirect.substr(redirect.indexOf("&forum=")+7);
+						forum = forum.substr(0, forum.indexOf("&"));
+					}
+					else {
+						link_type = "short";
+						id = redirect.substr(redirect.lastIndexOf("/")+1);
+						id = id.substr(0, id.indexOf("."));
+						forum = redirect.substr(redirect.indexOf("/nor/") + 5);
+						forum = forum.substr(0, forum.indexOf("/"));
+					}
+					//HTTPManager.GetPost(forum, id, link_type);
+					PageManager.changeLocation("post", {forum:forum, post:id, type:link_type}, true);
 				}
 				else {
-					link_type = "short";
-					id = redirect.substr(redirect.lastIndexOf("/")+1);
-					id = id.substr(0, id.indexOf("."));
-					forum = redirect.substr(redirect.indexOf("/nor/") + 5);
-					forum = forum.substr(0, forum.indexOf("/"));
+					HTTPEvents.fireEvent("onPostLoaded", Parser.parsePost(data));
 				}
-				//HTTPManager.GetPost(forum, id, link_type);
-				PageManager.changeLocation("post", {forum:forum, post:id, type:link_type}, true);
-			}
-			else {
-				HTTPEvents.fireEvent("onPostLoaded", Parser.parsePost(data));
-			}
+			});
 		},
 		error:function(a,b,c,d) {
 			HTTPEvents.fireEvent("onPostLoaded", {success:false});
@@ -128,9 +157,12 @@ HTTPManager.GetPost = function(forum, id, link_type) {
 HTTPManager.LoadInbox = function(page) {
 	$.ajax({
 		url:"https://rotter.name/cgi-bin/nor/dcboard.cgi?az=user&command=inbox&from=lobby&mm=" + page,
-		dataType:"text",
+		dataType:"binary",
+		processData: false,
 		success:function(data) {
-			HTTPEvents.fireEvent("onInboxLoaded", Parser.parseInbox(data));
+			HTTPManager.iconv(data, function(data) {
+				HTTPEvents.fireEvent("onInboxLoaded", Parser.parseInbox(data));
+			});
 		},
 		error:function(a,b,c,d) {
 			HTTPEvents.fireEvent("onInboxLoaded", {success:false});
@@ -145,9 +177,12 @@ HTTPManager.SendInboxMessage = function(address, title, content) {
 		url:"https://rotter.name/cgi-bin/nor/dcboard.cgi",
 		type:"POST",
 		data:"az=send_mesg&command=send&userid=" + Utils.HEBEncode(address) + "&subject=" + Utils.HEBEncode(title) + "&message=" + Utils.HEBEncode(content),
-		dataType:"text",
+		dataType:"binary",
+		processData: false,
 		success:function(data) {
-			HTTPEvents.fireEvent("onInboxMessageSent", Parser.parseInboxMessageSent(data));
+			HTTPManager.iconv(data, function(data) {
+				HTTPEvents.fireEvent("onInboxMessageSent", Parser.parseInboxMessageSent(data));
+			});
 		},
 		error:function(a,b,c,d) {
 			HTTPEvents.fireEvent("onInboxMessageSent", {success:false});
@@ -160,9 +195,12 @@ HTTPManager.SendInboxMessage = function(address, title, content) {
 HTTPManager.LoadInboxMessage = function(message_id) {
 	$.ajax({
 		url:"https://rotter.name/cgi-bin/nor/dcboard.cgi?az=user&command=show_mesg&id=" + message_id,
-		dataType:"text",
+		dataType:"binary",
+		processData: false,
 		success:function(data) {
-			HTTPEvents.fireEvent("onInboxMessageLoaded", Parser.parseInboxMessage(data));
+			HTTPManager.iconv(data, function(data) {
+				HTTPEvents.fireEvent("onInboxMessageLoaded", Parser.parseInboxMessage(data));
+			});
 		},
 		error:function(a,b,c,d) {
 			HTTPEvents.fireEvent("onInboxMessageLoaded", {success:false});
@@ -175,9 +213,12 @@ HTTPManager.LoadInboxMessage = function(message_id) {
 HTTPManager.LoadInboxMessageForReply = function(message_id, message_sender) {
 	$.ajax({
 		url:"https://rotter.name/cgi-bin/nor/dcboard.cgi?az=send_mesg&userid=" + Utils.HEBEncode(message_sender) + "&id=" + message_id,
-		dataType:"text",
+		dataType:"binary",
+		processData: false,
 		success:function(data) {
-			HTTPEvents.fireEvent("onInboxMessageLoadedForReply", Parser.parseInboxMessageForReply(data));
+			HTTPManager.iconv(data, function(data) {
+				HTTPEvents.fireEvent("onInboxMessageLoadedForReply", Parser.parseInboxMessageForReply(data));
+			});
 		},
 		error:function(a,b,c,d) {
 			HTTPEvents.fireEvent("onInboxMessageLoadedForReply", {success:false});
@@ -190,9 +231,12 @@ HTTPManager.LoadInboxMessageForReply = function(message_id, message_sender) {
 HTTPManager.CheckNewPrivateMessages = function(message_id, message_sender) {
 	$.ajax({
 		url:"https://rotter.name/cgi-bin/nor/dcboard.cgi",
-		dataType:"text",
+		dataType:"binary",
+		processData: false,
 		success:function(data) {
-			HTTPEvents.fireEvent("onInboxNewMessages", Parser.parseInboxNewMessages(data));
+			HTTPManager.iconv(data, function(data) {
+				HTTPEvents.fireEvent("onInboxNewMessages", Parser.parseInboxNewMessages(data));
+			});
 		},
 		error:function(a,b,c,d) {
 			HTTPEvents.fireEvent("onInboxNewMessages", {success:false});
@@ -210,10 +254,13 @@ HTTPManager.DeleteSelectedMessages = function(messages) {
 	$.ajax({
 		url:"https://rotter.name/cgi-bin/nor/dcboard.cgi",
 		type:"POST",
-		dataType:"text",
+		dataType:"binary",
+		processData: false,
 		data:"az=user&sub_command=prune&command=inbox&sec_command=&see_command=" + messagesPostString + "&delete=" + Utils.HEBEncode("מחק").replace(/\s/g, "+"),
 		success:function(data) {
-			HTTPEvents.fireEvent("onInboxMessagesDeleted", {success:true});
+			HTTPManager.iconv(data, function(data) {
+				HTTPEvents.fireEvent("onInboxMessagesDeleted", {success:true});
+			});
 		},
 		error:function(a,b,c,d) {
 			HTTPEvents.fireEvent("onInboxMessagesDeleted", {success:false});
@@ -226,9 +273,12 @@ HTTPManager.DeleteSelectedMessages = function(messages) {
 HTTPManager.LoadPreCommentPage = function(forum, postId, replyingTo) {
 	$.ajax({
 		url:"https://rotter.name/cgi-bin/nor/dcboard.cgi?az=post&forum=" + forum + "&om=" + postId + "&omm=" + replyingTo,
-		dataType:"text",
+		dataType:"binary",
+		processData: false,
 		success:function(data) {
-			HTTPEvents.fireEvent("onPreCommentPageLoaded", Parser.parsePreCommentPageDetails(data));
+			HTTPManager.iconv(data, function(data) {
+				HTTPEvents.fireEvent("onPreCommentPageLoaded", Parser.parsePreCommentPageDetails(data));
+			});
 		},
 		error:function(a,b,c,d) {
 			HTTPEvents.fireEvent("onPreCommentPageLoaded", {success:false});
@@ -239,9 +289,12 @@ HTTPManager.LoadPreCommentPage = function(forum, postId, replyingTo) {
 HTTPManager.LoadPreEditPage = function(forum, postId, commentNum) {
 	$.ajax({
 		url:"https://rotter.name/cgi-bin/nor/dcboard.cgi?az=edit&forum=" + forum + "&om=" + postId + "&omm=" + commentNum,
-		dataType:"text",
+		dataType:"binary",
+		processData: false,
 		success:function(data) {
-			HTTPEvents.fireEvent("onPreEditPageLoaded", Parser.parsePreEditPageDetails(data));
+			HTTPManager.iconv(data, function(data) {
+				HTTPEvents.fireEvent("onPreEditPageLoaded", Parser.parsePreEditPageDetails(data));
+			});
 		},
 		error:function(a,b,c,d) {
 			HTTPEvents.fireEvent("onPreEditPageLoaded", {success:false});
@@ -254,10 +307,13 @@ HTTPManager.SendComment = function(forum, postId, replyingTo, title, content) {
 	$.ajax({
 		url:"https://rotter.name/cgi-bin/nor/dcboard.cgi",
 		type:"POST",
-		dataType:"text",
+		dataType:"binary",
+		processData: false,
 		data:"rand=" + Config.PostRand + "&forum=" + forum + "&om=" + postId + "&omm=" + replyingTo + "&orig_url=" + encodeURIComponent(Config.OrigURL) + "&no_signature=&az=a_mesg&name=" + Utils.HEBEncode(Config.getParam("username")).replace(/\s/g, "+") + "&subject=" + Utils.HEBEncode(title) + "&msgfont=&msgcolor=&body=" + Utils.HEBEncode(content + "\n\n אדוםםקטןןנשלח ע\"י הסלולריסוףףסוףף") + "&post=" + Utils.HEBEncode("שלח הודעה").replace(/\s/g, "+"),
 		success:function(data) {
-			HTTPEvents.fireEvent("onCommentSent", Parser.parsePost(data));
+			HTTPManager.iconv(data, function(data) {
+				HTTPEvents.fireEvent("onCommentSent", Parser.parsePost(data));
+			});
 		},
 		error:function(a,b,c,d) {
 			HTTPEvents.fireEvent("onCommentSent", {success:false});
@@ -272,10 +328,13 @@ HTTPManager.EditPost = function(forum, postId, replyId, topicType, title, conten
 	$.ajax({
 		url:"https://rotter.name/cgi-bin/nor/dcboard.cgi",
 		type:"POST",
-		dataType:"text",
+		dataType:"binary",
+		processData: false,
 		data:"rand=" + Config.PostRand + "&forum=" + forum + "&om=" + postId + "&omm=" + replyId + "&topic_type=" + topicType + "&orig_url=" + encodeURIComponent(Config.OrigURL) + "&no_signature=&az=e_mesg&name=" + Utils.HEBEncode(Config.PosterName).replace(/\s/g, "+") + "&subject=" + Utils.HEBEncode(title) + "&msgfont=&msgcolor=&body=" + Utils.HEBEncode(content) + "&post=" + Utils.HEBEncode("עדכן הודעה").replace(/\s/g, "+"),
 		success:function(data) {
-			HTTPEvents.fireEvent("onEditPostSent", Parser.parsePost(data));
+			HTTPManager.iconv(data, function(data) {
+				HTTPEvents.fireEvent("onEditPostSent", Parser.parsePost(data));
+			});
 		},
 		error:function(a,b,c,d) {
 			HTTPEvents.fireEvent("onEditPostSent", {success:false});
@@ -290,10 +349,13 @@ HTTPManager.SendPost = function(forum, type, title, content) {
 	$.ajax({
 		url:"https://rotter.name/cgi-bin/nor/dcboard.cgi",
 		type:"POST",
-		dataType:"text",
+		dataType:"binary",
+		processData: false,
 		data:"rand=" + Config.PostRand + "&forum=" + forum + "&topic_type=" + type + "&orig_url=" + encodeURIComponent(Config.OrigURL) + "&no_signature=&az=a_mesg&name=" + Utils.HEBEncode(Config.getParam("username")).replace(/\s/g, "+") + "&subject=" + Utils.HEBEncode(title) + "&msgfont=&msgcolor=&body=" + Utils.HEBEncode(content + "\n\n אדוםםקטןןנשלח ע\"י הסלולריסוףףסוףף") + "&post=" + Utils.HEBEncode("שלח הודעה").replace(/\s/g, "+"),
 		success:function(data) {
-			HTTPEvents.fireEvent("onPostSent", Parser.parsePost(data));
+			HTTPManager.iconv(data, function(data) {
+				HTTPEvents.fireEvent("onPostSent", Parser.parsePost(data));
+			});
 		},
 		error:function(a,b,c,d) {
 			HTTPEvents.fireEvent("onPostSent", {success:false});
@@ -306,9 +368,12 @@ HTTPManager.SendPost = function(forum, type, title, content) {
 HTTPManager.LoadPrePostPage = function(forum) {
 	$.ajax({
 		url:"https://rotter.name/cgi-bin/nor/dcboard.cgi?az=post&forum=" + forum,
-		dataType:"text",
+		dataType:"binary",
+		processData: false,
 		success:function(data) {
-			HTTPEvents.fireEvent("onPrePostPageLoaded", Parser.parsePrePostPageDetails(data));
+			HTTPManager.iconv(data, function(data) {
+				HTTPEvents.fireEvent("onPrePostPageLoaded", Parser.parsePrePostPageDetails(data));
+			});
 		},
 		error:function(a,b,c,d) {
 			HTTPEvents.fireEvent("onPrePostPageLoaded", {success:false});
@@ -319,9 +384,12 @@ HTTPManager.LoadPrePostPage = function(forum) {
 HTTPManager.LoadPreJumpPage = function(forum, postId) {
 	$.ajax({
 		url:"https://rotter.name/cgi-bin/nor/dcboard.cgi?az=edit&forum=" + forum + "&om=" + postId + "&omm=0",
-		dataType:"text",
+		dataType:"binary",
+		processData: false,
 		success:function(data) {
-			HTTPEvents.fireEvent("onPreJumpPageLoaded", Parser.parsePreEditPageDetails(data));
+			HTTPManager.iconv(data, function(data) {
+				HTTPEvents.fireEvent("onPreJumpPageLoaded", Parser.parsePreEditPageDetails(data));
+			});
 		},
 		error:function(a,b,c,d) {
 			HTTPEvents.fireEvent("onPreJumpPageLoaded", {success:false});
@@ -333,10 +401,13 @@ HTTPManager.SendJumpPost = function(forum, postId, topicType, title, content) {
 	$.ajax({
 		url:"https://rotter.name/cgi-bin/nor/dcboard.cgi",
 		type:"POST",
-		dataType:"text",
+		dataType:"binary",
+		processData: false,
 		data:"rand=" + Config.PostRand + "&forum=" + forum + "&om=" + postId + "&omm=0&topic_type=" + topicType + "&orig_url=" + encodeURIComponent(Config.OrigURL) + "&no_signature=&az=up_mesg&name=" + Utils.HEBEncode(Config.PosterName).replace(/\s/g, "+") + "&subject=" + Utils.HEBEncode(title) + "&msgfont=&msgcolor=&body=" + Utils.HEBEncode(content) + "&post=" + Utils.HEBEncode("הקפץ הודעתך אל ראש הפורום").replace(/\s/g, "+"),
 		success:function(data) {
-			HTTPEvents.fireEvent("onJumpSent", Parser.parsePost(data));
+			HTTPManager.iconv(data, function(data) {
+				HTTPEvents.fireEvent("onJumpSent", Parser.parsePost(data));
+			});
 		},
 		error:function(a,b,c,d) {
 			HTTPEvents.fireEvent("onJumpSent", {success:false});

@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.yanivnagar.rotterexclusive" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="com.yanivnagar.rotterexclusive" version="2.35" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>רוטר אקסקלוסיבי</name>
     <description>
         A sample Apache Cordova application that responds to the deviceready event.
@@ -25,8 +25,6 @@
     <preference name="DisallowOverscroll" value="true" />
     <preference name="BackupWebStorage" value="local" />
     <preference name="StatusBarOverlaysWebView" value="false" />
-    <engine name="android" spec="~6.2.3" />
-    <engine name="ios" spec="^4.4.0" />
     <plugin name="cordova-plugin-admobpro" spec="^2.29.0" />
     <plugin name="cordova-plugin-camera" spec="^2.4.1" />
     <plugin name="cordova-plugin-device" spec="^1.1.6" />
@@ -38,4 +36,5 @@
     <plugin name="cordova-plugin-statusbar" spec="^2.2.3" />
     <plugin name="cordova-plugin-whitelist" spec="1" />
     <plugin name="onesignal-cordova-plugin" spec="^2.1.1" />
+    <engine name="ios" spec="^4.4.0" />
 </widget>

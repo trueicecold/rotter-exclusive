@@ -1,7 +1,8 @@
 var Config = {};
 var Properties = {};
 
-Config.DEBUG = false;
+Config.DEBUG = true;
+Config.VIGLINK = "2ffcc379246cf92bd0a1a9a54a7a7542";
 
 Config.setParam = function (name, value, format) {
 	if (!format) format = "text";
