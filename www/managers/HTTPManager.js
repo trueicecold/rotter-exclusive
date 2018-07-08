@@ -13,7 +13,7 @@ HTTPManager.init = function () {
 HTTPManager.CheckLogin = function (username, password) {
 	$.ajax({
 		url:"https://rotter.name/cgi-bin/nor/dcboard.cgi",
-		dataType:"binary",
+		dataType:HTTPManager.getConfigDataType(),
 		processData: false,
 		success:function(data) {
 			HTTPManager.iconv(data, function(data) {
@@ -32,7 +32,7 @@ HTTPManager.Login = function (username, password) {
 	$.ajax({
 		url:"https://rotter.name/cgi-bin/nor/dcboard.cgi?az=login",
 		type:"GET",
-		dataType:"binary",
+		dataType:HTTPManager.getConfigDataType(),
 		processData: false,
 		data:"cmd=login&" + Utils.HEBEncode("שם-משתמש") + "=" + Utils.HEBEncode(Utils.escapeLogin(username)) + "&" + Utils.HEBEncode("סיסמא") + "=" + Utils.HEBEncode(Utils.escapeLogin(password)) + "&login=" + Utils.HEBEncode("קליק"),
 		success:function(data) {
@@ -53,7 +53,7 @@ HTTPManager.Logout = function () {
 	/*PushManager.deleteTags();*/
 	$.ajax({
 		url:"https://rotter.name/cgi-bin/nor/dcboard.cgi?az=logout",
-		dataType:"binary",
+		dataType:HTTPManager.getConfigDataType(),
 		processData: false,
 		success:function(data) {
 			HTTPManager.iconv(data, function(data) {
@@ -69,7 +69,7 @@ HTTPManager.Logout = function () {
 HTTPManager.GetForumList = function() {
 	$.ajax({
 		url:"https://rotter.name/cgi-bin/nor/dcboard.cgi",
-		dataType:"binary",
+		dataType:HTTPManager.getConfigDataType(),
 		processData: false,
 		success:function(data) {
 			HTTPManager.iconv(data, function(data) {
@@ -85,19 +85,24 @@ HTTPManager.GetForumList = function() {
 }
 
 HTTPManager.iconv = function(data, callback) {
-	var reader = new FileReader();
-	reader.onload = function(e) {
-		callback(e.target.result);
-		reader.onload = null;
-		delete reader;
-	};
-	reader.readAsText(data, "cp1255");
+	if (Config.getParam("hebrewFix") === "1") {
+		var reader = new FileReader();
+		reader.onload = function(e) {
+			callback(e.target.result);
+			reader.onload = null;
+			delete reader;
+		};
+		reader.readAsText(data, "cp1255");
+	}
+	else {
+		callback(data);
+	}
 }
 
 HTTPManager.GetForumPosts = function(forum, page) {
 	$.ajax({
 		url:"https://rotter.name/cgi-bin/nor/dcboard.cgi?az=list&forum=" + forum + "&mm=" + page,
-		dataType:"binary",
+		dataType:HTTPManager.getConfigDataType(),
 		processData: false,
 		success:function(data) {
 			HTTPManager.iconv(data, function(data) {
@@ -116,7 +121,7 @@ HTTPManager.GetPost = function(forum, id, link_type) {
 	HTTPManager.post_ref_url = (link_type=="long") ? "https://rotter.name/cgi-bin/nor/dcboard.cgi?az=show_thread&om=" + id + "&forum=" + forum + "&viewmode=all" : "https://rotter.name/nor/" + forum + "/" + id + ".shtml";
 	$.ajax({
 		url:HTTPManager.post_ref_url,
-		dataType:"binary",
+		dataType:HTTPManager.getConfigDataType(),
 		processData: false,
 		success:function(data) {
 			HTTPManager.iconv(data, function(data) {
@@ -157,7 +162,7 @@ HTTPManager.GetPost = function(forum, id, link_type) {
 HTTPManager.LoadInbox = function(page) {
 	$.ajax({
 		url:"https://rotter.name/cgi-bin/nor/dcboard.cgi?az=user&command=inbox&from=lobby&mm=" + page,
-		dataType:"binary",
+		dataType:HTTPManager.getConfigDataType(),
 		processData: false,
 		success:function(data) {
 			HTTPManager.iconv(data, function(data) {
@@ -177,7 +182,7 @@ HTTPManager.SendInboxMessage = function(address, title, content) {
 		url:"https://rotter.name/cgi-bin/nor/dcboard.cgi",
 		type:"POST",
 		data:"az=send_mesg&command=send&userid=" + Utils.HEBEncode(address) + "&subject=" + Utils.HEBEncode(title) + "&message=" + Utils.HEBEncode(content),
-		dataType:"binary",
+		dataType:HTTPManager.getConfigDataType(),
 		processData: false,
 		success:function(data) {
 			HTTPManager.iconv(data, function(data) {
@@ -195,7 +200,7 @@ HTTPManager.SendInboxMessage = function(address, title, content) {
 HTTPManager.LoadInboxMessage = function(message_id) {
 	$.ajax({
 		url:"https://rotter.name/cgi-bin/nor/dcboard.cgi?az=user&command=show_mesg&id=" + message_id,
-		dataType:"binary",
+		dataType:HTTPManager.getConfigDataType(),
 		processData: false,
 		success:function(data) {
 			HTTPManager.iconv(data, function(data) {
@@ -213,7 +218,7 @@ HTTPManager.LoadInboxMessage = function(message_id) {
 HTTPManager.LoadInboxMessageForReply = function(message_id, message_sender) {
 	$.ajax({
 		url:"https://rotter.name/cgi-bin/nor/dcboard.cgi?az=send_mesg&userid=" + Utils.HEBEncode(message_sender) + "&id=" + message_id,
-		dataType:"binary",
+		dataType:HTTPManager.getConfigDataType(),
 		processData: false,
 		success:function(data) {
 			HTTPManager.iconv(data, function(data) {
@@ -231,7 +236,7 @@ HTTPManager.LoadInboxMessageForReply = function(message_id, message_sender) {
 HTTPManager.CheckNewPrivateMessages = function(message_id, message_sender) {
 	$.ajax({
 		url:"https://rotter.name/cgi-bin/nor/dcboard.cgi",
-		dataType:"binary",
+		dataType:HTTPManager.getConfigDataType(),
 		processData: false,
 		success:function(data) {
 			HTTPManager.iconv(data, function(data) {
@@ -254,7 +259,7 @@ HTTPManager.DeleteSelectedMessages = function(messages) {
 	$.ajax({
 		url:"https://rotter.name/cgi-bin/nor/dcboard.cgi",
 		type:"POST",
-		dataType:"binary",
+		dataType:HTTPManager.getConfigDataType(),
 		processData: false,
 		data:"az=user&sub_command=prune&command=inbox&sec_command=&see_command=" + messagesPostString + "&delete=" + Utils.HEBEncode("מחק").replace(/\s/g, "+"),
 		success:function(data) {
@@ -273,7 +278,7 @@ HTTPManager.DeleteSelectedMessages = function(messages) {
 HTTPManager.LoadPreCommentPage = function(forum, postId, replyingTo) {
 	$.ajax({
 		url:"https://rotter.name/cgi-bin/nor/dcboard.cgi?az=post&forum=" + forum + "&om=" + postId + "&omm=" + replyingTo,
-		dataType:"binary",
+		dataType:HTTPManager.getConfigDataType(),
 		processData: false,
 		success:function(data) {
 			HTTPManager.iconv(data, function(data) {
@@ -289,7 +294,7 @@ HTTPManager.LoadPreCommentPage = function(forum, postId, replyingTo) {
 HTTPManager.LoadPreEditPage = function(forum, postId, commentNum) {
 	$.ajax({
 		url:"https://rotter.name/cgi-bin/nor/dcboard.cgi?az=edit&forum=" + forum + "&om=" + postId + "&omm=" + commentNum,
-		dataType:"binary",
+		dataType:HTTPManager.getConfigDataType(),
 		processData: false,
 		success:function(data) {
 			HTTPManager.iconv(data, function(data) {
@@ -307,7 +312,7 @@ HTTPManager.SendComment = function(forum, postId, replyingTo, title, content) {
 	$.ajax({
 		url:"https://rotter.name/cgi-bin/nor/dcboard.cgi",
 		type:"POST",
-		dataType:"binary",
+		dataType:HTTPManager.getConfigDataType(),
 		processData: false,
 		data:"rand=" + Config.PostRand + "&forum=" + forum + "&om=" + postId + "&omm=" + replyingTo + "&orig_url=" + encodeURIComponent(Config.OrigURL) + "&no_signature=&az=a_mesg&name=" + Utils.HEBEncode(Config.getParam("username")).replace(/\s/g, "+") + "&subject=" + Utils.HEBEncode(title) + "&msgfont=&msgcolor=&body=" + Utils.HEBEncode(content + "\n\n אדוםםקטןןנשלח ע\"י הסלולריסוףףסוףף") + "&post=" + Utils.HEBEncode("שלח הודעה").replace(/\s/g, "+"),
 		success:function(data) {
@@ -328,7 +333,7 @@ HTTPManager.EditPost = function(forum, postId, replyId, topicType, title, conten
 	$.ajax({
 		url:"https://rotter.name/cgi-bin/nor/dcboard.cgi",
 		type:"POST",
-		dataType:"binary",
+		dataType:HTTPManager.getConfigDataType(),
 		processData: false,
 		data:"rand=" + Config.PostRand + "&forum=" + forum + "&om=" + postId + "&omm=" + replyId + "&topic_type=" + topicType + "&orig_url=" + encodeURIComponent(Config.OrigURL) + "&no_signature=&az=e_mesg&name=" + Utils.HEBEncode(Config.PosterName).replace(/\s/g, "+") + "&subject=" + Utils.HEBEncode(title) + "&msgfont=&msgcolor=&body=" + Utils.HEBEncode(content) + "&post=" + Utils.HEBEncode("עדכן הודעה").replace(/\s/g, "+"),
 		success:function(data) {
@@ -349,7 +354,7 @@ HTTPManager.SendPost = function(forum, type, title, content) {
 	$.ajax({
 		url:"https://rotter.name/cgi-bin/nor/dcboard.cgi",
 		type:"POST",
-		dataType:"binary",
+		dataType:HTTPManager.getConfigDataType(),
 		processData: false,
 		data:"rand=" + Config.PostRand + "&forum=" + forum + "&topic_type=" + type + "&orig_url=" + encodeURIComponent(Config.OrigURL) + "&no_signature=&az=a_mesg&name=" + Utils.HEBEncode(Config.getParam("username")).replace(/\s/g, "+") + "&subject=" + Utils.HEBEncode(title) + "&msgfont=&msgcolor=&body=" + Utils.HEBEncode(content + "\n\n אדוםםקטןןנשלח ע\"י הסלולריסוףףסוףף") + "&post=" + Utils.HEBEncode("שלח הודעה").replace(/\s/g, "+"),
 		success:function(data) {
@@ -368,7 +373,7 @@ HTTPManager.SendPost = function(forum, type, title, content) {
 HTTPManager.LoadPrePostPage = function(forum) {
 	$.ajax({
 		url:"https://rotter.name/cgi-bin/nor/dcboard.cgi?az=post&forum=" + forum,
-		dataType:"binary",
+		dataType:HTTPManager.getConfigDataType(),
 		processData: false,
 		success:function(data) {
 			HTTPManager.iconv(data, function(data) {
@@ -384,7 +389,7 @@ HTTPManager.LoadPrePostPage = function(forum) {
 HTTPManager.LoadPreJumpPage = function(forum, postId) {
 	$.ajax({
 		url:"https://rotter.name/cgi-bin/nor/dcboard.cgi?az=edit&forum=" + forum + "&om=" + postId + "&omm=0",
-		dataType:"binary",
+		dataType:HTTPManager.getConfigDataType(),
 		processData: false,
 		success:function(data) {
 			HTTPManager.iconv(data, function(data) {
@@ -401,7 +406,7 @@ HTTPManager.SendJumpPost = function(forum, postId, topicType, title, content) {
 	$.ajax({
 		url:"https://rotter.name/cgi-bin/nor/dcboard.cgi",
 		type:"POST",
-		dataType:"binary",
+		dataType:HTTPManager.getConfigDataType(),
 		processData: false,
 		data:"rand=" + Config.PostRand + "&forum=" + forum + "&om=" + postId + "&omm=0&topic_type=" + topicType + "&orig_url=" + encodeURIComponent(Config.OrigURL) + "&no_signature=&az=up_mesg&name=" + Utils.HEBEncode(Config.PosterName).replace(/\s/g, "+") + "&subject=" + Utils.HEBEncode(title) + "&msgfont=&msgcolor=&body=" + Utils.HEBEncode(content) + "&post=" + Utils.HEBEncode("הקפץ הודעתך אל ראש הפורום").replace(/\s/g, "+"),
 		success:function(data) {
@@ -415,4 +420,8 @@ HTTPManager.SendJumpPost = function(forum, postId, topicType, title, content) {
 		complete:function(data) {
 		}
 	});
+}
+
+HTTPManager.getConfigDataType = function() {
+	return (Config.getParam("hebrewFix") === "1") ? "binary" : "text";
 }
