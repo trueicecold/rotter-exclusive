@@ -12,19 +12,20 @@ PagesScripts.login.initHandlers = function() {
 PagesScripts.login.onCheckLogin = function(event) {
 	if (event.data != null && event.data.success && event.data.success === true) {
 		Config.setParam("username", event.data.username);
-		if (PushManager.initPage) {
+		/*if (PushManager.initPage) {
 		    PageManager.changeLocation(PushManager.initPage.page, PushManager.initPage.params);
 		    PushManager.initPage = null;
 		}
 		else
 		    PageManager.changeLocation("forums");
         setTimeout(function() {
-            PushManager.registerUsername(this.data.username);
-        }.bind(event), 15000);
+            PushManager.registerUsername(this.data.username);*/
+		PageManager.changeLocation("forums");
+        //}.bind(event), 15000);
 	}
 	else {
 		console.log("NOT LOGGED IN!");
-		PushManager.deleteTags();
+		/*PushManager.deleteTags();*/
 		Config.removeParam("username");
 		PageManager.changeLocation("login");
 	}
@@ -37,7 +38,7 @@ PagesScripts.login.login = function() {
 
 PagesScripts.login.onLogin = function(event) {
 	if (event.data != null && event.data.success != null && event.data.success === true) {
-		PushManager.registerUsername($("#login_username").val());
+		/*PushManager.registerUsername($("#login_username").val());*/
 		Config.setParam("username", $("#login_username").val());
 		PageManager.changeLocation("settings");
 	}

@@ -2,7 +2,6 @@
     "AdSupport.framework": 2,
     "AVFoundation.framework": 2,
     "CoreLocation.framework": 2,
-    "SystemConfiguration.framework": 2,
     "ImageIO.framework": 1,
     "libz.tbd": 1,
     "CoreData.framework": 1,
@@ -24,5 +23,6 @@
     "OpenGLES.framework": 1,
     "SafariServices.framework": 1,
     "StoreKit.framework": 1,
-    "UIKit.framework": 1
+    "UIKit.framework": 1,
+    "SystemConfiguration.framework": 1
 }

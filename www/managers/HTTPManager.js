@@ -3,6 +3,7 @@ var HTTPEvents = new EventTarget();
 
 jQuery.ajaxSetup({ 
 	'beforeSend': function(req) {
+		console.log(req);
 		req.setRequestHeader("FromApp", "true")
 	}
 })
@@ -118,7 +119,7 @@ HTTPManager.GetForumPosts = function(forum, page) {
 }
 
 HTTPManager.GetPost = function(forum, id, link_type) {
-	HTTPManager.post_ref_url = (link_type=="long") ? "https://rotter.name/cgi-bin/nor/dcboard.cgi?az=show_thread&om=" + id + "&forum=" + forum + "&viewmode=all" : "https://rotter.name/nor/" + forum + "/" + id + ".shtml";
+	HTTPManager.post_ref_url = (link_type=="long") ? "https://rotter.name/cgi-bin/nor/dcboard.cgi?az=read_count&om=" + id + "&forum=" + forum + "&viewmode=all" : "https://rotter.name/nor/" + forum + "/" + id + ".shtml";
 	$.ajax({
 		url:HTTPManager.post_ref_url,
 		dataType:HTTPManager.getConfigDataType(),

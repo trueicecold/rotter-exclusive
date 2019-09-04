@@ -30,6 +30,11 @@ PagesScripts.settings.drawLogin = function() {
 	    $("#pushTagging").attr("checked", "checked");
 	else
 	    $("#pushTagging").removeAttr("checked");
+	
+	if (Config.getParam("hebrewFix") == "1")
+	    $("[name=hebrewFix][value=1]").attr("checked", "checked");
+	else
+	    $("[name=hebrewFix][value=0]").attr("checked", "checked");
 }
 
 PagesScripts.settings.setPushPrivate = function() {
@@ -85,6 +90,11 @@ PagesScripts.settings.loadSettings = function() {
 PagesScripts.settings.setPostFontSize = function(size) {
 	Config.setParam("postFontSize", $("#postFontSize").val());
 	$("#postFontSizeExample").css("fontSize", $("#postFontSize").val() + "px");
+}
+
+PagesScripts.settings.setHebrewFix = function(size) {
+	Config.setParam("hebrewFix", $("[name=hebrewFix]:checked").val());
+	Config.ForumsList = null;
 }
 
 HTTPEvents.addEventListener("onLogout", PagesScripts.settings.onLogout);

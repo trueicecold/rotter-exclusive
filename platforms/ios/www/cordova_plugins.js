@@ -332,6 +332,14 @@ module.exports = [
         "clobbers": [
             "window.AdMob"
         ]
+    },
+    {
+        "id": "onesignal-cordova-plugin.OneSignal",
+        "file": "plugins/onesignal-cordova-plugin/www/OneSignal.js",
+        "pluginId": "onesignal-cordova-plugin",
+        "clobbers": [
+            "OneSignal"
+        ]
     }
 ];
 module.exports.metadata = 
@@ -349,7 +357,8 @@ module.exports.metadata =
     "cordova-plugin-statusbar": "2.2.3",
     "cordova-plugin-whitelist": "1.3.2",
     "cordova-plugin-extension": "1.5.3",
-    "cordova-plugin-admobpro": "2.29.29"
+    "cordova-plugin-admobpro": "2.29.29",
+    "onesignal-cordova-plugin": "2.1.1"
 };
 // BOTTOM OF METADATA
 });

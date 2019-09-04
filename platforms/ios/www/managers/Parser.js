@@ -68,7 +68,10 @@ Parser.parseForumPosts = function(str) {
 		forumPosts[i].link = forumPosts[i].link.substr(0, forumPosts[i].link.indexOf('">'));
 		
 		if (forumPosts[i].title.indexOf("הועבר:") > -1) {
-			forumPosts[i].title = forumPosts[i].title.substr(forumPosts[i].title.indexOf('.shtml">')+8);
+			if (forumPosts[i].title.indexOf('.shtml">') > -1)
+				forumPosts[i].title = forumPosts[i].title.substr(forumPosts[i].title.indexOf('.shtml">')+8);
+			else
+				forumPosts[i].title = forumPosts[i].title.substr(forumPosts[i].title.indexOf('forum=' + PageManager.hashParams["forum"] + '">')+8+PageManager.hashParams["forum"].length);
 			forumPosts[i].title = "הועבר: " + forumPosts[i].title.substr(0, forumPosts[i].title.indexOf("</a>"));
 			forumPosts[i].transferred = true;
 		}
